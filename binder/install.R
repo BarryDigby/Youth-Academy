@@ -1,0 +1,7 @@
+options(repos = c(REPO_NAME = "https://packagemanager.rstudio.com/all/latest"))
+install.packages("randomForest")
+install.packages("rpart")
+install.packages("ranger")
+install.packages("tidymodels")
+install.packages("tidyverse")
+install.packages("themis")
