@@ -1,14 +1,7 @@
 ---
 type: slides
 ---
-
-# Introduction to Genomic Data Science
-
-Notes: Hi, I'm Ines! I'm one of the core developers of spaCy, a popular library
-for advanced Natural Language Processing in Python.
-
-In this lesson, we'll take a look at the most important concepts of spaCy and
-how to get started.
+# Week 1 Slides
 
 ---
 
@@ -19,18 +12,7 @@ how to get started.
 - contains the processing pipeline
 - includes language-specific rules for tokenization etc.
 
-Notes: At the center of spaCy is the object containing the processing pipeline.
-We usually call this variable "nlp".
-
-For example, to create an English `nlp` object, you can import the `English`
-language class from `spacy.lang.en` and instantiate it. You can use the nlp
-object like a function to analyze text.
-
-It contains all the different components in the pipeline.
-
-It also includes language-specific rules used for tokenizing the text into words
-and punctuation. spaCy supports a variety of languages that are available in
-`spacy.lang`.
+Notes: Let's start by introducing some 
 
 ---
 

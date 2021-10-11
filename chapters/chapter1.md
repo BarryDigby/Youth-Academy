@@ -1,6 +1,6 @@
 ---
 title: 'Week 1: Introduction to Genetics' 
-description: An introduction to the basic concepts of genetics
+description:
 prev: null
 next: /chapter2
 id: 1
