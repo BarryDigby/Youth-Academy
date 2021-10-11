@@ -1,6 +1,6 @@
+name: youth-academy
 channels:
   - conda-forge
-  - bioconductor
 dependencies:
   - r-base=3.6
   - r-ggplot2
