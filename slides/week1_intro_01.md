@@ -7,12 +7,12 @@ type: slides
 
 # What is Genomics?
 
-> Genomics is the study of the structure and function of organisms genomes. 
 
-- contains the processing pipeline
-- includes language-specific rules for tokenization etc.
+- Genomics is the study of the complete set of DNA in a person or organism.
 
-Notes: Let's start by introducing some 
+Genomics uses a combination of recombinant DNA, DNA sequencing methods, and bioinformatics algorithms to sequence, assemble, and analyse the structure and function of genomes.
+
+Traditional genetics typically focused on one gene and one gene product at a time, genomics has the ability to analyze the entire genome 
 
 ---
 
