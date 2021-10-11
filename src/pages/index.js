@@ -24,7 +24,7 @@ export default ({ data }) => {
                     Rapid advancements in high-throughput technologies used to sequence the human genome have led to an unprecedented increase in the availability and use of genomics data. The analysis of these large, complex datasets requires a new generation of highly trained scientists who possess not only a sound understanding of the underlying biological principles and technologies, but also the necessary quantitative and computational skills.
                 </p>
                 <p>
-                    Students enrolled in this course will gain experience coding in R, learn about basic data structures and produce simple visualisations of datasets - all throught the prism of genomics.
+                    Students enrolled in this course will gain experience coding in R, learn about basic data structures and produce simple visualisations of datasets - all through the prism of genomics.
                 </p>
                 </div>
             </section>
