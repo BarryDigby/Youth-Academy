@@ -17,9 +17,9 @@
     },
     "showProfileImage": true,
     "footerLinks": [
-        { "text": "Source", "url": "https://github.com/BarryDigby/Youth_Academy" },
+        { "text": "Source", "url": "https://github.com/BarryDigby/Youth-Academy" },
         { "text": "Built with", "url": "https://github.com/ines/course-starter-r" },
-        { "text": "Please report any bugs you find as an issue (click me to add an issue)","url":"https://github.com/BarryDigby/Youth_Academy/issues/new?assignees=&labels=&template=bug_report.md&title=Data+Exercise+Bug%2FError"}
+        { "text": "Please report any bugs you find as an issue (click me to add an issue)","url":"https://github.com/BarryDigby/Youth-Academy/issues/new?assignees=&labels=&template=bug_report.md&title=Data+Exercise+Bug%2FError"}
     ],
     "theme": "#de7878"
 }

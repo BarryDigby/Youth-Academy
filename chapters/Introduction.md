@@ -1,6 +1,6 @@
 ---
 title: 'Course Introduction' 
-description: This website has been designed with several interactive elements for you to engage with. Please take the time to go through this document before beginning the weekly exercises.
+description: Please take the time to go through this section before beginning the weekly exercises.
 prev: null
 next: /chapter1
 id: 1
@@ -19,7 +19,7 @@ Let's take a look at code blocks, as they will be used heavily throughout the co
 
 Below is an example of a code block.
 
-When you click 'Run code', the code is sent to a `container` hosted at a separate website where it is evaluated, and the output is returned on screen for you. Containers are lightweight images of software - this means you don't have to install anything on your computer - you send your code to the container. They are increasingly popular in data science and cloud computing. 
+When you click 'Run code', the code is sent to a <span style="color:blue">container</span> hosted at a separate website where it is evaluated, and the output is returned on screen for you. Containers are lightweight images of software - this means you don't have to install anything on your computer - you send your code to the container. They are increasingly popular in data science and cloud computing. 
 
 When running a code block for the first time you will see  <span style="color:blue">"Launching Docker container on mybinder.org..."</span>
 
