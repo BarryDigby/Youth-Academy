@@ -7,138 +7,90 @@ type: slides
 
 # What is Genomics?
 
+- Genomics applies recombinant DNA methods, DNA sequencing technology and bioinformatics algorithms to sequence, assemble and analyse the structure and function of an organisms genome. 
 
-- Genomics is the study of the complete set of DNA in a person or organism.
+The field of genomics can be broadly divided into 5 sub-categories:
 
-Genomics uses a combination of recombinant DNA, DNA sequencing methods, and bioinformatics algorithms to sequence, assemble, and analyse the structure and function of genomes.
+1. Comparative genomics
+2. Epigenomics
+3. Functional genomics
+4. Phylogenomics
+5. Personalised genomics
+---
 
-Traditional genetics typically focused on one gene and one gene product at a time, genomics has the ability to analyze the entire genome 
+# Comparative Genomics
+
+<img src="/comp-genomics-facts.jpg" alt="Fact sheet comparative genomics (NIH)" width="80%"/>
+
+
+Notes: 
+
+- Common features of two organisms will often be encoded within DNA that is conserved between the species.
+
+- More precisely, the DNA sequences encoding the proteins and RNAs responsible for functions that were conserved from the last common ancestor should be preserved in contemporary genome sequences.
+
+- Likewise, the DNA sequences controlling the expression of genes that are regulated similarly in two related species should also be conserved.
+
+- Conversely, sequences that encode (or control the expression of) proteins and RNAs responsible for differences between species will themselves be divergent.
 
 ---
 
-# The Doc object
+# Epigenomics 
 
-```python
-# Created by processing a string of text with the nlp object
-doc = nlp("Hello world!")
+<img src="/epigenomics-facts.jpg" alt="Fact sheet functional genomics (NIH)" width="80%"/>
 
-# Iterate over tokens in a Doc
-for token in doc:
-    print(token.text)
-```
+Notes:
 
-```out
-Hello
-world
-!
-```
+- Epigenomics is the study of heritable changes in gene expression that are independent of changes in DNA sequence. 
 
-Notes: When you process a text with the `nlp` object, spaCy creates a `Doc`
-object – short for "document". The Doc lets you access information about the
-text in a structured way, and no information is lost.
+- More broadly, we can say epigenomics is the study of changes in phenotype that reflect nongenetic aleritions in a cell or organism. 
 
-The Doc behaves like a normal Python sequence by the way and lets you iterate
-over its tokens, or get a token by its index. But more on that later!
+---
+# Functional Genomics 
+
+<img src="/tsc-heatmap.png" alt="TSC vs. TAN heatmap" height="50%"/>
+
+Notes: 
+
+- Functional genomics involves measuring the expression level of genes in cells that exist in different physiologic, pathological or developmental conditions.
+
+- Gene expression is measured by quantifying the amount of RNA in the cell, which can be mapped back to the DNA sequence from which it came. Multiple hits mapping to the same gene would indicate that the gene is being highly expressed *in the condition being studied*.
 
 ---
 
-# The Token object
+# Phylogenomics 
 
-<img src="/doc.png" alt="Illustration of a Doc object containing four tokens" width="50%" />
 
-```python
-doc = nlp("Hello world!")
+<img src="/phylogenetic-tree.jpg" alt="Rooted, unrooted trees." width="100%"/>
 
-# Index into the Doc to get a single Token
-token = doc[1]
+Notes: 
 
-# Get the token text via the .text attribute
-print(token.text)
-```
+- Phylogenetics is the study of how different species are related. We can say that phylogenetics is looking back in the evolutionary time to trace the history of species or a group of species.
 
-```out
-world
-```
-
-Notes: `Token` objects represent the tokens in a document – for example, a word
-or a punctuation character.
-
-To get a token at a specific position, you can index into the doc.
-
-`Token` objects also provide various attributes that let you access more
-information about the tokens. For example, the `.text` attribute returns the
-verbatim token text.
+- This evolutionary history of a group of organisms can be represented in a diagram called a phylogenetic tree.
 
 ---
 
-# The Span object
+# Personalised Genomics
 
-<img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing four tokens and three of them wrapped in a Span" />
+<img src="/personalised-medicine.png" alt="personalised"/>
 
-```python
-doc = nlp("Hello world!")
+Notes: 
 
-# A slice from the Doc is a Span object
-span = doc[1:3]
+- Reduced costs of sequencing DNA means clinicians may opt to have their patients genome sequenced.
 
-# Get the span text via the .text attribute
-print(span.text)
-```
+- Personalised genomics can be used as a screening tool to confirm the presence or absence of genetic diseases. This is particularly relevant for children of parents that are homozygous for pathogenic variants.
 
-```out
-world!
-```
+- In the event a genetic disease is found, personalised genomics can inform the best course of action for therapeutic treatments. This branch of personalised genomics is called pharmacogenomics, which can predict which drugs will be most effective against the disease, whilst minimising negative side effects for the patient.
 
-Notes: A `Span` object is a slice of the document consisting of one or more
-tokens. It's only a view of the `Doc` and doesn't contain any data itself.
-
-To create a span, you can use Python's slice notation. For example, `1:3` will
-create a slice starting from the token at position 1, up to – but not including!
-– the token at position 3.
+- Commercial kits available to order online: [23andMe](https://www.23andme.com/en-eu/) (tests disease related genetic markers) & [Dante Labs](https://www.dantelabs.com/) (performs whole genome sequencing).
 
 ---
 
-# Lexical Attributes
+# Recurring themes
 
-```python
-doc = nlp("It costs $5.")
-```
-
-```python
-print("Index:   ", [token.i for token in doc])
-print("Text:    ", [token.text for token in doc])
-
-print("is_alpha:", [token.is_alpha for token in doc])
-print("is_punct:", [token.is_punct for token in doc])
-print("like_num:", [token.like_num for token in doc])
-```
-
-```out
-Index:    [0, 1, 2, 3, 4]
-Text:     ['It', 'costs', '$', '5', '.']
-
-is_alpha: [True, True, False, False, False]
-is_punct: [False, False, False, False, True]
-like_num: [False, False, False, True, False]
-```
-
-Notes: Here you can see some of the available token attributes:
-
-`i` is the index of the token within the parent document.
-
-`text` returns the token text.
-
-`is_alpha`, `is_punct` and `like_num` return boolean values indicating whether
-the token consists of alphabetic characters, whether it's punctuation or whether
-it _resembles_ a number. For example, a token "10" – one, zero – or the word
-"ten" – T, E, N.
-
-These attributes are also called lexical attributes: they refer to the entry in
-the vocabulary and don't depend on the token's context.
-
----
-
-# Let's practice!
-
-Notes: Now it's your turn. Let's take a look at spaCy's statistical models and
-their predictions.
+- DNA
+- RNA
+- Gene expression
+- Genome sequencing
+- Phenotype
