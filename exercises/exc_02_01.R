@@ -1,8 +1,2 @@
-# Read in the data
-mat <- read.csv("data/stroke-data.csv", header=T, sep=",")
-
-# Check the dimensions of the data frame
-dim(mat)
-
-# Check the columns in the data frame
-str(mat)
+# Make a 3x3 matrix
+matrix(1:9, ncol=3, nrow=3)
