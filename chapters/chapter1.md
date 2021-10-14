@@ -353,7 +353,27 @@ Go to the [online IGV browser](https://igv.org/app/) and search for the gene `KR
 
 Some weeks of the program will be centered around coding. The following set of exercises should serve as an introduction to using R. 
 
-### An oversized calculator
+## Variables
+In programming, variables allow us to store information and associate that information with a name. In R, we assign variables by using the assignment operator, an arrow sign `<-` made with a carat and a dash.
+
+```R
+course_name <- "Youth Academy"
+```
+
+In the example above, we store the string value "Youth Academy" in a variable called course\_name. Variable names can't have spaces or symbols in their names other than an underscore (\_). They can't begin with numbers but they can have numbers after the first letter (e.g, var\_1  is OK).
+
+If we need to update a variable but perform the same logical process on it, we can change its value! 
+
+<codeblock id="01_02">
+</codeblock>
+
+Above, we create the variable message\_string, assign a welcome message, and print the greeting. 
+After we greet the user, we want to wish them goodbye. We then update message\_string to a departure 
+message and print it.
+
+**Note**: You can also use = instead of <- to assign a value. However popular nomenclature dictates the use of `<-`. 
+
+## An oversized calculator
 
 As R is a statistical programming language, it should come as no surprise we will first cover simple calculations. R performs addition, subtraction, multiplication, division, exponentiation and modulo with `*` `-` `+` `/` `^` `%%`.
 
@@ -369,9 +389,81 @@ Note: to perform a calculation, you do not have to assign it to a variable. R wi
 [1] 2
 ```
 
+In reality, it is rare to come across code that prints intermediate calculations to output. Usually we assign calculations to variables and perform mathematical operations on the variable.
+
 <codeblock id="01_01">
 </codeblock>
 
+***
+## Data Types
 
+Let’s dive into how R interprets different types of data. In R and in programming, <span style="color:blue">data types are an attribute of data which tells the compiler how we want to use the data </span>.
 
-<exercise>
+* **Numeric**: Any number with or without a decimal point: `23`, `0.03` and the numeric null value `NA`.
+* **Character**: Any grouping of characters on your keyboard (letters, numbers, spaces, symbols, etc.) or text. When surrounded by single quotes: ' ... ' or double quotes " ... ", it becomes a **string**.
+* **Logical**: This data type only has two possible values— either TRUE or FALSE (without quotes). It’s helpful to think of logical types or **booleans**, i.e answers to a “yes” or “no” question.
+* **Vectors**: A list of related data that is all the same type.
+* **NA**: This data type represents the absence of a value, and is represented by the keyword NA (without quotes). It has its own significance in the context of the different types. That is there is a numeric NA, a character NA,and a logical NA.
+
+```R
+class(2) # numeric
+class('hello') # character
+class('23') #character <- numeric in quotes becomes a character
+class (FALSE) #logical
+class(NA) #logical
+```
+
+Data types are important in Data Visualisation, we will come across them again when using `ggplot2`. 
+
+## Vectors
+As mentioned in Data Types,  vectors are a list-like structure that contain items of the same data type. 
+
+An example of a character vector:
+```R
+spring_months <- c("March", "April", "May", "June")
+```
+
+In the example above, we created a new variable `spring_months` that contains a character vector. In order to <span style="color:red">c</span>oncatenate the individual character strings to a vector, we use `c()`. 
+
+A few operations you shopuld be able to perform on a vector:
+
+* Check the type of elements in a vector by using `typeof(vector_name)`
+* Check the length of a vector by using `length(vector_name)`
+* Access individual elements in the vector by using `[]` and placing the element position inside the square brackets. For example, if we wanted to access the second element we would write: `vector_name[2]`. 
+
+<codeblock id="01_03">
+</codeblock>
+
+***
+
+**Note: In R, you start counting elements at position one, not zero!**
+
+We can join two vectors together using the `c()` function in R:
+```R
+vector <- c(1,2,3,4,5)
+vector_2 <- c(6,7,8,9,10)
+
+x <- c(vector, vector_2)
+
+print(x)
+
+[1] 1 2 3 4 5 6 7 8 9 10
+```
+
+Be careful not to mix data types in a vector. Observe below what happens when mixing variables, characters and numerics in a vector:
+
+<codeblock id="01_04">
+</codeblock>
+
+You may have noticed that mixing data types in a vector might not produce what you hoped for. The presence of one character in `tester_1` renders the entire vector as a character data type. 
+
+**Note:** R stores numbers as doubles, hence why it returned a double for `typeof(tester_1)`. That is to say, `double()` is the same as `numeric()`. 
+
+## Sandbox
+
+Feel free to play around with the codeblock given below, it does not expect any answer so go wild. I'm 99.99% sure you can't break anything...
+
+<codeblock id="01_05">
+</codeblock>
+
+</exercise>

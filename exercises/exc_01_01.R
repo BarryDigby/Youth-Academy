@@ -1,14 +1,17 @@
 # Perform the following calculations in R 
+# (Please print the variables after storing the calulation)
 
 # 1. Addition
-# Calculate 100 + 50
+# Calculate 100 + 50 (Assign to variable Q1)
+
 
 # 2. Subtraction 
-# Calculate 500 - 32
+# Calculate 500 - 32 (Assign to variable Q2)
 
-# 3. Using variables
-# Assign the calculations from question 1. & 2. to variables named Q1 & Q2, respectievly.
-# Multiply the two variables
 
-# Save the multiplication to a variable named Q3
-# Divide Q3 by Q1
+# 3. Calculations on variables
+# Perform multiplication on Q1 and Q2 (Assign to variable Q3)
+
+
+# 4. Divide Q3 by Q1 (Assign to variable Q4)
+
