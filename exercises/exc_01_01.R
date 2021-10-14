@@ -1,5 +1,4 @@
-# Read in the FASTA file
-fasta <- read.table("data/test.fa", header=F)
+# Perform the following calculations in R 
 
-# print the contents of the file 
-print(fasta)
+# Add 100 and 55
+2 + 2
