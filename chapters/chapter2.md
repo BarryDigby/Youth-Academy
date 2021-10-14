@@ -72,27 +72,33 @@ The dataframe has 4909 observations (rows) recorded for 12 variables (columns). 
 - **id**: A patient identifier given by an integer value.
 - **gender**: The sex of the patient.
 - **age**: Age of the patient given by an integer value.
-- **hypertension**: Does the patient suffer from hypertension? Values are coded as 0 or 1.
-- **heart_disease**: Does the patient suffer from heart disease? Values are coded as 0 or 1.
-- **ever_married**: Is the patient married? Notice these are coded as a `Factor`.
-- **work_type**: Sector the patient works in. These are also coded as a `Factor`.
-- **Residence_type**: Does the patient live in a rural or urban area? Coded as a `Factor`.
-- **avg\_glucose\_level**: Patients average glucose level, recorded as a numeric. 
-- **bmi**: Patients body mass index, recorded as a numeric.
-- **smoking_status**: Is the patient one of "former", "smoker", "non-smoker", or "unknown"? Coded as a `Factor`.
-- **stroke**: Has the patient had a stroke? Values are coded as 0 or 1. 
+- **hypertension**: Does the patient suffer from hypertension?
+- **heart_disease**: Does the patient suffer from heart disease?
+- **ever_married**: Is the patient married?
+- **work_type**: Sector the patient works in.
+- **Residence_type**: Does the patient live in a rural or urban area?
+- **avg\_glucose\_level**: Patients average glucose level.
+- **bmi**: Patients body mass index.
+- **smoking_status**: Is the patient one of "former", "smoker", "non-smoker", or "unknown"?
+- **stroke**: Has the patient had a stroke?
 
 ***
 
-The variables `hypertension`, `heart_disease` and `stroke` are currently coded as numerics. These are boolean variables, as the outcome is either "Yes" or "No". We should convert them to Yes and No for 1 and 0, respectively, and store them as Factors. This way R knows that there are only 2 possible outcomes - "Yes" or "No" which will make plotting the data easier. 
+## Acessing values 
 
-We are going to use an `ifelse` statement to convert 0 to "No", and 1 to "Yes". The example code block below reads as - "if a value in the column `hypertension` is 0, change it to "No". Otherwise, change it to "Yes"".
+Conceptually, a dataframe is a grid of values. We can access specific cells by slicing the dataframe. Much like vectors, we supply an index after the dataframe variable. 
 
-```R
-df$hypertension <- ifelse(df$hypertension == 0, "No", "Yes")
-df$heart_disease <- 
-```
+The main difference is that we supply two values, one for rows and one for columns:
 
+<img src="slicingDataFrames.png" width="100%">
 
+***
+
+Alternatively, we can call a column by its name. This is a very useful feature of dataframes and allows for human readable, logical column names.
+
+This is done by using the dollar (`$`) symbol after the `data.frame` variable. Try it out below: 
+
+<codeblock id="02_05">
+</codeblock>
 
 </exercise>
