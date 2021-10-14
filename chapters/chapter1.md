@@ -355,17 +355,18 @@ Some weeks of the program will be centered around coding. The following set of e
 
 ### An oversized calculator
 
-As R is a statistical programming language, it should come as no surprise we will cover simple calculations in R first. 
+As R is a statistical programming language, it should come as no surprise we will first cover simple calculations. R performs addition, subtraction, multiplication, division, exponentiation and modulo with `*` `-` `+` `/` `^` `%%`.
 
-R performs addition, subtraction, multiplication, division, exponentiation and modulo with `*` `-` `+` `/` `^` `%%`.
-
-Note: to perform a calculation, you do not have to assign it to a variable. 
+Note: to perform a calculation, you do not have to assign it to a variable. R will interpret each line individually and evaluate the code. See below for an example.
 
 ```R
 2 + 2
+
+4/2
 ```
 ```console
 [1] 4
+[1] 2
 ```
 
 <codeblock id="01_01">
