@@ -53,13 +53,23 @@ A `data.frame` is basically a table-like format (think excel spreadsheets) which
 
 ***
 
-I will not spend time teaching you how to construct a `data.frame`, instead we will focus on reading in datasets and getting to grips with inspecting the dataset. (Note, any `.txt`, `.tsv`, `.csv` file can be read as a dataframe - the caveat here is that each row must have the same number of columns, and the columns must have the same number of rows).
+I will not spend time teaching you how to construct a `data.frame`, instead we will focus on reading in datasets and getting to grips with inspecting the dataset. 
 
 Let's practice reading in a `data.frame`. I have prepared a healthcare dataset on strokes to use this week.
 
-**Note:** We use the R function `read.csv()` as the dataset is stored in a comma-separated values file.
+## Loading Dataframes
+Any `.txt`, `.tsv`, `.csv` file can be read as a dataframe - the caveat here is that each row must have the same number of columns, and the columns must have the same number of rows - missing values will cause an error when attempting to load the data into R.
+
+A `.tsv` file is a 'tab separated values' file, a `.csv` file is a 'comma separated values' file and a `.txt` text file can contain either comma or tab separated values. These 'spacing characters' are known as <span style="color:blue">delimiters</span>.
+
+In R, we use the `read.table()` and `read.csv()` functions to read in dataframes. I will focus on using `read.table()` as it can handle `.txt`, `.tsv` and `.csv` files by specifying the delimiter used with the <span style="color:red">`sep`</span> argument, which takes `","`, or `"\t"` for commas and tabs, respectively. The <span style="color:red">header</span> argument tells R to set the first line of the file as the column names. 
+
+Please take a moment to view the dataframe file as a raw file, you can clearly see the comma values separating each column. Character values are also surounded by double quotes. 
 
 - View the raw file here -> [link](https://raw.githubusercontent.com/BarryDigby/Youth-Academy/master/data/stroke-data.csv)
+
+Now take a moment to view the file as a dataframe on github (GitHub formats `.txt`, `.tsv` and `.csv` files automatically for you to make them easy to view). We aim to replicate this style of formatting in R. 
+
 - View the file formatted as a dataframe here -> [link](https://github.com/BarryDigby/Youth-Academy/blob/master/data/stroke-data.csv)
 
 <codeblock id="02_04">
@@ -84,11 +94,10 @@ The dataframe has 4909 observations (rows) recorded for 12 variables (columns). 
 
 ***
 
-## Acessing values 
-
+## Accessing values 
 Conceptually, a dataframe is a grid of values. We can access specific cells by slicing the dataframe. Much like vectors, we supply an index after the dataframe variable. 
 
-The main difference is that we supply two values, one for rows and one for columns:
+The main difference is that we supply two index values, one for rows and columns separated by a comma. 
 
 <img src="slicingDataFrames.png" width="100%">
 
@@ -100,5 +109,52 @@ This is done by using the dollar (`$`) symbol after the `data.frame` variable. T
 
 <codeblock id="02_05">
 </codeblock>
+
+## Filtering values
+Filtering dataframes is an extremely important skill required to manipulate datasets. It is vitally important that you are able to identify and remove data of poor quality (outliers, mislabelled points, non-informative data).
+
+To filter data in R, we need to use <span style="color:blue">conditional operators</span>. Conditional operators return a boolean value (`TRUE`, `FALSE`) for the filtering threshold applied, and as such are also called <span style="color:blue">logical operators</span>.
+
+- <span style="color:red">`<`</span> less than
+- <span style="color:red">`<=`</span> less than or equal to
+- <span style="color:red">`>`</span> greater than
+- <span style="color:red">`>=`</span> greater than or equal to
+- <span style="color:red">`==`</span> exactly equal to
+- <span style="color:red">`!=`</span> not equal to
+- <span style="color:red">`!x`</span> Not x
+- <span style="color:red">`x | y`</span> x OR y
+- <span style="color:red">`x & y`</span> x AND y
+
+In the example below, we will filter the dataset to remove patients below the age of 18 using `subset()`, who's first argument is the dataframe to subset, followed by the variable we wish to perform a conditional operation on, and finally the operation itself. 
+
+<codeblock id="02_06">
+</codeblock>
+
+## Updating Dataframes
+It is common practice to create new columns in a dataframe that are a function of previously existing columns in the dataset. For example, in the stroke dataset, we might want to transform the variable 'avg\_glucose\_level' using the natural logarithm, storing it as a new variable:
+
+```R
+df$log_glucose <- log(df$avg_glucose_level + 1)
+```
+
+To assign a new column/variable in our data frame, we use the dollar sign in the same way we call a column that exists. As the column name `log_glucose` does not exist, R will create the new column for you.
+
+You can concatenate columns, perform mathematical operations, conditional operations etc - we are essentially performing operations on a series of vectors!
+
+</exercise>
+
+<exercise id="3" title="Descriptive statistics">
+After loading data into R, the first thing we want to do it get a sense of the distribution of values in our dataset. Looking at the dataframe by eye is not an option here - we have nearly 5000 values!
+
+***
+
+We have previously inspected the data type of each variable by using `str()`. We saw that the variables `id`, `age`, `bmi` and `avg_glucose_level` are all integer values. Let's use a histogram to inspect the distribution of these 4 variables. If needed, the image below is a quick refresher on histograms:
+
+<img src="histogram_exp.jpg" width="100%">
+
+
+<codeblock id="02_07">
+</codeblock>
+
 
 </exercise>

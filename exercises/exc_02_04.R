@@ -1,5 +1,5 @@
 # Read in the dataset 
-df <- read.csv("data/stroke-data.csv", header=TRUE, sep=",")
+df <- read.table("data/stroke-data.csv", header=TRUE, sep=",")
 
 # How many columns and rows? (i.e the dimensions)
 print(dim(df))

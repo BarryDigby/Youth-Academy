@@ -413,10 +413,8 @@ class (FALSE) #logical
 class(NA) #logical
 ```
 
-Data types are important in Data Visualisation, we will come across them again when using `ggplot2`. 
-
 ## Vectors
-As mentioned in Data Types,  vectors are a list-like structure that contain items of the same data type. 
+As mentioned in Data Types,  vectors are a list of elements that contain items of the same data type.
 
 An example of a character vector:
 ```R
