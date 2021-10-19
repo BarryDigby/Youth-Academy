@@ -141,19 +141,233 @@ To assign a new column/variable in our data frame, we use the dollar sign in the
 
 You can concatenate columns, perform mathematical operations, conditional operations etc - we are essentially performing operations on a series of vectors!
 
+To delete a column in a dataset, use `subset()` with the argument `select`. By placing a minus sign before the variable name we are essentially telling R to subtract this column from the dataframe.
+
+```R
+df <- subset(df, select=-c(column_to_drop))
+```
+
+
+
 </exercise>
 
-<exercise id="3" title="Descriptive statistics">
-After loading data into R, the first thing we want to do it get a sense of the distribution of values in our dataset. Looking at the dataframe by eye is not an option here - we have nearly 5000 values!
+<exercise id="3" title="Exploratory Data Analysis (EDA)">
+<p>After loading data into R, the first thing we want to do is generate some plots of the variables in the dataset. This is a measure of quality control, we can identify serious outliers or incorrectly labelled data points via plots. Furthermore, we can get a sense of the distribution of values in our dataset. Looking at the dataframe by eye is not an option here - we have nearly 5000 values!</p>
+
+Now is a good time to define types of variables:
+
+- <span style="color:blue">Categorical variables</span>: are values that are not quantifiable. An example would be the year you belong to in secondary school.
+
+- <span style="color:blue">Continuous variables</span>: are values that take on an infinite number within an interval. Continuous variables are obtained via quantifiable measurements.
+
+- <span style="color:blue">Discrete variables</span>: are values that take on a finite number of real values. An example is the outcome of rolling a dice, where the values all lie within the set {1,2,3,4,5,6}.
+
+## Boxplots
+Boxplots are useful for visualising the distribution of variables by inspecting their quartiles. We can check if our data is tightly grouped (or spread out), if it has outliers or if the distribution is skewed. The take home message from the figure below is that the 'box' in the boxplot represents the interquartile range (25th to 75th percentile) of the data. The line within the box represents the median value in the data, the blue lines extend as far as the minimum and maximum data point. The exception to this is when a point is defined as an outlier, which will appear as a data point outside of the range of the boxplot.
+
+<img src="boxplots.png" width="100%">
 
 ***
 
-We have previously inspected the data type of each variable by using `str()`. We saw that the variables `id`, `age`, `bmi` and `avg_glucose_level` are all integer values. Let's use a histogram to inspect the distribution of these 4 variables. If needed, the image below is a quick refresher on histograms:
+To make a boxplot in R, we will use `ggboxplot()`. We would typically use a boxplot when we want to compare the distribution of a continuous variable within a categorical variable. Hopefully this makes sense in the plots below, where we inspect the distribution of age within the group 'smoking_status'.
+
+Breakdown of arguments passed to `ggboxplot`:
+- first argument 'df' is the dataframe with data
+- `x`: Variable to plot on x-axis (the group)
+- `y`: Variable to plot on y-axis (the continuous variable)
+- `palette`: Color palette
+- `color`: Add different colors to each boxplot (according to smoking status).
+- `ggtheme`: Add a ggplot2 theme to plot. 
+
+<codeblock id="02_10">
+</codeblock>
+
+## Histograms
+Histograms show the empirical distribution of one-dimensional data, the y-axis shows the count (or proportion [frequency]) of the observations that fall in the range shown on the x-axis. If you need a quick refresher on histograms, please take a moment to walk through the example given below:
 
 <img src="histogram_exp.jpg" width="100%">
 
+***
+To plot a histogram in R, we will use `gghistogram()`. Histograms are useful for checking the distribution of the data, particularly to assess if it follows a normal distribution. (If it does not we  have to transform the data so we do not violate the underlying assumptions of statistical tests - this is (probably) beyond the scope of this course...)
+
+
+Breakdown of arguments passed to `gghistogram`:
+- first argument is the dataframe
+- `x`: Variable to plot on the x-axis (continuous variable)
+- `y`: Variable to plot on the y-axis (..count.. or ..density..)
+- `fill`: Fill color
+- `color`: Color histogram according to grouping variable. 
+- `rug`: add ticks along x-axis showing where original data points fall
+
+
+<codeblock id="02_09">
+</codeblock>
+
+***
+## Scatterplots 
+Scatterplots allow us to examine the joint distribution of two continuous variables. Like the other plots, we can color the data using a 3rd variable. Scatterpots are primarily used to assess the relationship between two variables - do they rise together? (positive correlation) or does one fall as the other rises (negative correlation).
+
+To make a scatterplot in R, we will use `ggscatter()`. A breakdown of the arguments is given below (hopefully you notice `ggpubr` recycles the same arguments for many of its functions):
+
+- first argument `df` is the dataframe
+- `x`: Data to plot on x-axis (continuous)
+- `y`: Data to plot on y-axis (continuous)
+- `color`: color the points according to categorical, continuous variable
+- `facet.by`: Split the plot according to a variable
+- `add`: Add additional parameters to the plot (I added a regression line 'reg.line')
+- `conf.int`: Include regression line confidence interval
+- `add.params`: configure the parameters used in `add` (I made the 'reg.line' blue.)
 
 <codeblock id="02_07">
+</codeblock>
+
+***
+
+Great work making it this far! You should be able to make an attempt at the questions in the quiz for this week. 
+
+Please do not hesistate to try making your own plots using the Stroke dataset with `ggpubr()`. The documentation for each plot are available at the following links: 
+
+- [Histograms](https://rpkgs.datanovia.com/ggpubr/reference/gghistogram.html)
+- [Scatterplots](https://rpkgs.datanovia.com/ggpubr/reference/ggscatter.html)
+- [Boxplots](https://rpkgs.datanovia.com/ggpubr/reference/ggboxplot.html)
+
+The code block below is an empty slate with the dataframe and library loaded to produce plots. If you are still not comfortable, go back to the examples and make a small change to the code, click Run, and see what happens. Rinse and repeat until you are comfortable. 
+
+If you are still struggling, not to worry. I can help you during Saturday's class. 
+
+<codeblock id="02_06">
+</codeblock>
+
+</exercise>
+
+<exercise id="4" title="Worksheet">
+
+## ToothGrowth Data
+For this weeks worksheet you will be inspecting the `ToothGrowth` dataset which shows the relationship between the growth of teeth of guinea pigs at each of three dose levels of Vitamin C (0.5, 1 and 2 mg) with each of two delivery methods(orange juice and ascorbic acid).
+
+Take a moment to inspect the dataframe in the code block below. Make use of `str()`, `summary()`, `head()` etc to view the 3 variables and their data type.
+
+<codeblock id="02_11">
+</codeblock>
+
+Answer the following questions regarding the 3 variables:
+
+1. What type of variable is `len`?
+
+    <choice id="1">
+    <opt text="Continuous" correct=true>
+    Yes that is correct, len is a measurable variable.</opt>
+    <opt text="Categorical">
+    Not quite. len does not denote a membership to any group.</opt>
+    </choice>
+
+2. What is the interquartile range (Q1 - Q3) for `len`?
+
+    <choice id="2">
+    <opt text="1st Q: 0.500, 3rd Q: 2.000">
+    Not quite, try using summary(ToothGrowth) to check.</opt>
+    <opt text="OJ:30, VC:30">
+    Not quite, try using summary(ToothGrowth) to check.</opt>
+    <opt text="1st Q:13.07, 3rd Q:25.27" correct=true>
+    Yes that is correct!</opt>
+    </choice>
+
+3. What type of variable is `supp`?
+
+    <choice id="3">
+    <opt text="Continuous">
+    Not quite, for starters supp is not numeric.</opt>
+    <opt text="Categorical" correct=true>
+    Yes, supp is categorical, we can see it is a factor with 2 levels (one for each group).</opt>
+    </choice>
+
+4. What does VC and OJ stand for in `supp`?
+
+    <choice id="4">
+    <opt text="Vita Coco, Orange Juice">
+    Not quite, be sure to read about the dataset.</opt>
+    <opt text="Vitamin C, Orange Juice" correct=true>
+    Yes, ascorbic acid is vitamin c..</opt>
+    <opt text="Vitamin C, OJ Simpson">
+    Let's hope not for the sake of the guinea pigs.</opt>
+    </choice>
+
+5. What type of variable is `dose`?
+
+    <choice id="5">
+    <opt text="Continuous">
+    Not quite, 3 doses of VC were administered, dose can only belong to one of 0.5mg, 1mg or 2mg.</opt>
+    <opt text="Categorical" correct=true>
+    Yes, dose is categorical, despite it having a numerical representation.</opt>
+    </choice>
+
+***
+
+## Increasing Dose of VC
+Firstly, we are going to see if increasing the Vitamin C **dose** increases tooth length. We will be using `ggboxplot()` here, feel free to make the plot as visually simple or complex as you like, the important thing is that you are able to assess the relationships between variables - not make rainbows appear on screen. 
+
+<codeblock id="02_12">
+</codeblock>
+
+***
+
+Answer the following questions regarding the plot:
+
+1. Does increasing VC dose increase tooth length?
+
+    <choice id="6">
+    <opt text="Yes" correct=true>
+    Indeed we can see the distributions of tooth length increase according to increased dose</opt>
+    <opt text="No">
+    Not quite, the y-axis represents tooth length. We can see it increase steadily with increased dose (x-axis).</opt>
+    </choice>
+
+2. Are there any outliers present in the plot?
+
+    <choice id="7">
+    <opt text="Yes" correct=true>
+    Correct, we can see an individual data point in dose 0.5 which represents an outlier.</opt>
+    <opt text="No">
+    Not quite, review the figure explaining boxplots.</opt>
+    </choice>
+
+***
+
+## Facet by ~
+Next, we want to examine tooth length at dose level 0.5mg, 1mg and 2mg in **both** OJ abnd VC supplements. You will want to keep `len` on the y-axis, change the x-axis to `supp` and finally, use `dose` in `facet.by`. We used `facet.by` in the scatterplot example to split the plot. Make an attempt to fill out the plot below. 
+
+<codeblock id="02_13">
+</codeblock>
+
+Answer the following question: 
+
+1. At lower doses (0.5mg , 1mg) which supplement method is more effective?
+
+    <choice id="8">
+    <opt text="Orange Juice" correct=true>
+    Correct, we can see in the 0.5mg and 1mg faceted plots that OJ yields higher tooth length.</opt>
+    <opt text="Vitamin C">
+    Not quite.</opt>
+    </choice>
+
+***
+
+## Prettify
+Nice job identifying trends in the dataset. Now we want to present the results to your ficticious boss. He/She likes using colorful plots to help interpret the data, and properly labelled axes are a must. He/She has requested:
+
+- Convert the column `dose` to a factor in the dataframe.
+- Plot `supp` on the x-axis
+- Plot `len` on the y-axis
+- Facet the plot by `dose`
+- Include boxplot errorbars
+- Use the "lancet" palette
+- Color by `supp`
+- Use the theme_bw() for ggtheme
+- Make the x-axis label "Ascorbic Acid Supplement"
+- Make the y-axis label "Tooth Length (mm)"
+- Make the plot title "Week 2 Worksheet"
+
+<codeblock id="02_14">
 </codeblock>
 
 
