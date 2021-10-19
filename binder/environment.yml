@@ -1,9 +1,11 @@
 name: youth-academy
 channels:
   - conda-forge
+  - bioconda
 dependencies:
   - r-base=3.6
   - r-ggplot2
   - r-pheatmap
   - r-ggpubr
   - r-rcolorbrewer
+  - bioconductor-deseq2
