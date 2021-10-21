@@ -78,7 +78,7 @@ I will provide an embedded video from Illumina to describe this section. It is w
 
 ***
 
-<iframe src="https://www.youtube.com/embed/fCd6B5HRaZ8" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:425px;width:100%;border:none;overflow:hidden;"></iframe>
+<iframe src="https://www.youtube.com/embed/fCd6B5HRaZ8" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:425px;width:100%;border:none;overflow:hidden;" allowfullscreen></iframe>
 
 </exercise>
 
@@ -109,15 +109,8 @@ Researchers use RNA-Seq to study the changes in gene expression between two (or 
 
 The cDNA is then subjected to high-throughput sequencing techniques outlined in the Illumina video above. 
 
-<details>
-<summary>Food for thought</summary>
-lalalalala
-</details>
---- 
-
-
 ## FASTQ Files
-Let's take a look at the file returned from an Illumina sequencing machine, called FASTQ files. Below are the first 4 reads from a sequencing run.
+Let's take a look at the file returned from a sequencing machine, called FASTQ files. Below are the first 4 reads from a sequencing run.
 
 ```console
 @SRR6357073.31043222 31043222/1 kraken:taxid|4932
@@ -154,5 +147,51 @@ BBBBBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFFFFFFFFFFFFFFFFFFFFFFFFF
   <img src="ASCII.png" width="100%"/>
   <figcaption><b>Figure 2</b>: Phred scores assigned to each called base.</figcaption>
 </figure>
+
+***
+
+## Genome Alignment
+
+Now that we have all of our RNA seq reads in a FASTQ file (one file per sample sequenced), we need to map them back to the reference genome in order to determine which gene they came from. In the video below, we will take a look at aligned RNA-Seq reads in a BAM file, and view them using IGV. This should help you visualise the concept of genome alignment. 
+
+
+To participate in this video, you will need to download two files:
+
+- <span style="color:red">RAP1\_UNINDUCED\_REP1.markdup.sorted.bam</span>
+
+- <span style="color:red">RAP1\_UNINDUCED\_REP1.markdup.sorted.bam.bai</span>
+
+The files are available at the following URL: [https://github.com/BarryDigby/Youth-Academy/tree/master/data](https://github.com/BarryDigby/Youth-Academy/tree/master/data).
+
+You will also need to open the IGV web browser once again: [https://igv.org/app/](https://igv.org/app/)
+
+`SNC1` locus : `chrI:87,286-87,752`
+
+<iframe src="https://www.youtube.com/embed/khwWzz0G_eg" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:425px;width:100%;border:none;overflow:hidden;" allowfullscreen></iframe>
+
+
+
+</exercise>
+
+<exercise id="3" title="Case Study: The Cancer Genome Atlas (TCGA) Dataset">
+
+## TCGA data
+
+The Cancer Genome Atlas (TCGA) data is a publicly available database containing clinical and genomic data across 33 cancer types. These data include gene expression, CNV profiling, SNP genotyping, DNA methylation, miRNA profiling, exome sequencing, and other types of data. 
+
+For this case study, we will use gene expression data for 5 genes ("GATA3", "PTEN", "XBP1", "ESR1", "MUC1") in 3 cancer subtypes:
+
+1. `BRCA`: Breast cancer
+
+2. `LUSC`: Lung squamous ell carcinoma
+
+3. `OV`: Ovarian serous cystadenocarcinoma
+
+
+You will be tasked with making some exploratory data analysis plots (boxplots, histograms, scatterplots) that we covered in week 2, and I will also show you how to do a basic statistical test to check if the differences in gene expression are 'real'. Multiple choice questions will follow some code blocks to check if you are interpreting the plots correctly. 
+
+
+
+
 
 </exercise>
