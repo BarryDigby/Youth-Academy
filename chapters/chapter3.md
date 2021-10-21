@@ -190,8 +190,22 @@ For this case study, we will use gene expression data for 5 genes ("GATA3", "PTE
 
 You will be tasked with making some exploratory data analysis plots (boxplots, histograms, scatterplots) that we covered in week 2, and I will also show you how to do a basic statistical test to check if the differences in gene expression are 'real'. Multiple choice questions will follow some code blocks to check if you are interpreting the plots correctly. 
 
+## Data Inspection
 
+As always, the first thing we need to do is read the dataset into R and inspect the columns to get a sense of what kind of variables we are working with.
 
+<codeblock id="03_01">
+</codeblock:>
 
+1. How many patients are in the dataset?
+
+    <choice id="1">
+    <opt text="6">
+    Not quite, there are 6 columns, each storing information about a patient (i.e a variable).</opt>
+    <opt text="1305">
+    Correct, each row corresponds to a patients data</opt>
+    <opt text="33">
+    Not quite.</opt>
+    </choice>
 
 </exercise>
