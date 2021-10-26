@@ -8,4 +8,4 @@ dependencies:
   - r-pheatmap
   - r-ggpubr
   - r-rcolorbrewer
-  - bioconductor-deseq2
+  - r-cluster

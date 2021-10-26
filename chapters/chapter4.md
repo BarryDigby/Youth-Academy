@@ -1,5 +1,5 @@
 ---
-title: 'Week 4: The Whys and Hows of foobar' 
+title: 'Week 4: Shell Terminal & Algorithms' 
 description: Why we need foobar
 prev: /chapter3
 next: /chapter5
