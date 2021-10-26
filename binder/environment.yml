@@ -9,3 +9,5 @@ dependencies:
   - r-ggpubr
   - r-rcolorbrewer
   - r-cluster
+  - r-gplots
+  - r-dendextend
