@@ -1,6 +1,6 @@
 ---
 title: 'Course Introduction' 
-description: Please take the time to go through this section before beginning the weekly exercises.
+description: Please take the time to go through this section before beginning the course.
 prev: null
 next: /chapter1
 id: 1
@@ -9,15 +9,28 @@ type: chapter
 
 <exercise id="1" title="Click me!">
 
-You have just opened an exercise! Exercises may come in the form of code blocks, multiple choice questions or both. Sometimes I will use exercise blocks to explain a concept further, so bear in mind not every exercise you see in a week contains work for you to do.
+You have just opened a section. You can track your progress throughout the week by marking a section as completed (see the button below). 
 
-Let's take a look at code blocks, as they will be used heavily throughout the course.
+
+In general, each week will follow a simple structure in terms of sections:
+
+- Introducing a topic
+
+- A worked example with questions
+
+- A worksheet for you to complete yourself.
+
+During the week I recommend covering the introduction section, and if time permits, the worked examples. On Saturday we can cover the worksheet and go back over any topics that were unclear in the introduction / worked example. 
+
+***
+
+**Note**: This course is designed so you get hands on experience in handling datasets and coding. I will **not** ask you to write out answers, or learn off definitions (like the ancient methods used in the leaving cert). If you are curious about a topic or piece of code, first try to google the topic yourself and explore further. Alternatively, reach out to me with questions.
 
 </exercise>
 
 <exercise id="2" title="Code Blocks">
 
-Below is an example of a code block.
+This course will incorporate more and more coding as the it progresses.
 
 When you click 'Run code', the code is sent to a <span style="color:blue">container</span> hosted at a separate website where it is evaluated, and the output is returned on screen for you. Containers are lightweight images of software - this means you don't have to install anything on your computer - you send your code to the container. They are increasingly popular in data science and cloud computing. 
 
@@ -45,14 +58,13 @@ Let's cover user inputs in the next section.
 
 <exercise id ="3" title="Code Blocks & User Inputs">
 
-In addition to the 'Run code' button, there will be a green 'Submit' button which will check if your answer is correct when user inputs are supplied.
+In the worksheets, there will be times when I expect you to fill in the gaps in a code block.
 
 For these code blocks I will typically leave a blank piece of code in the form of `______` which you have to fill in yourself.
 
-I have also included hints if you need a helping hand!
+**Note**: I will provide the solution to these code blocks if you are stuck, click 'show solution' to view it. 
 
 <codeblock id="int_02">
-If you are stuck, take a look at the code block in exercise 2.
 </codeblock>
 
 How many nucleotides are in the sequence? 
