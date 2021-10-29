@@ -50,9 +50,9 @@ The output from the code block should be
 
 Do not worry about the `[1]` - this is just `R's` way of saying 'this is line 1 of your output'. The output from the code block is printing the variable `var`, which of course returns "foobar" - the string we assigned to `var` by using the assign operator (`<-`). The second output is the number of characters in the string. We achieved this by using `nchar()`. 
 
-The code block above was quite simple, there were no missing lines or missing variables for you to fill in. You just had to click "Run code". I did not include any hints or solutions - something that will usually be made available to you.
+The code block above was used to demonstrate code. You were not required to fill in any empty variables. There will be plenty of these code blocks in the course, particularly when I am explaining how something works in R.
 
-Let's cover user inputs in the next section.
+Let's cover user inputs in the next section, these will be used for worksheets and sometimes case studeies. 
 
 </exercise>
 

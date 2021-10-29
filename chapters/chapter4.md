@@ -1,5 +1,5 @@
 ---
-title: 'Week 4: Cluster Analysis' 
+title: 'Week 4: Machine Learning Part I' 
 description:
 prev: /chapter3
 next: /chapter5
