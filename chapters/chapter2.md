@@ -1,6 +1,6 @@
 ---
 title: 'Week 2: Data Frames and Plots' 
-description: Plots using ggpubr
+description: ''
 prev: /chapter1
 next: /chapter3
 id: 2
@@ -235,7 +235,7 @@ The code block below is an empty slate with the dataframe and library loaded to 
 
 If you are still struggling, not to worry. I can help you during Saturday's class. 
 
-<codeblock id="02_06">
+<codeblock id="02_066">
 </codeblock>
 
 </exercise>

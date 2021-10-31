@@ -1,6 +1,6 @@
 ---
 title: 'Week 4: Machine Learning Part I' 
-description:
+description: ''
 prev: /chapter3
 next: /chapter5
 id: 4

@@ -4,6 +4,4 @@ df <- read.table("data/stroke-data.csv", sep=",", header=T)
 # load ggpubr
 library(ggpubr)
 
-# subset by age
-under_18 <- subset(df, df$age >= 18)
-over_18 <- subset(df, df$age <= 18)
+# perform any operation on df

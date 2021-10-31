@@ -1,6 +1,6 @@
 ---
 title: 'Week 5: Machine Learning Part II' 
-description: 
+description: ''
 prev: /chapter4
 next: /chapter6
 id: 5
@@ -17,9 +17,45 @@ This week we will cover classification using K-nearest neighbours. Many of the c
 
 ***
 
-Designing a classifier can be broken into the following steps:
+Consider the image below containing a subset of the Iris dataset. We can see how each flower species clusters together. 
 
-1. Identify the dataset and split it into a training and validation set.
+<figure>
+  <img src="knn_eg_1.png" width="100%"/>
+  <figcaption><b>Figure 1</b>: Floral species clustered using PCA</figcaption>
+</figure>
 
-2. 
+***
+
+We now have a new, unlabelled data point in our dataset:
+
+<figure>
+  <img src="knn_eg_2.png" width="100%"/>
+  <figcaption><b>Figure 2</b>: New sample added to dataset.</figcaption>
+</figure>
+
+***
+
+Which group do you think the new data point belongs to? 
+
+<choice id="1">
+<opt text="Setosa" correct=true>
+Yes</opt>
+<opt text="Virginica">
+Not quite</opt>
+<opt text="Versicolor">
+Not quite.</opt>
+</choice>
+
+It was easy for us to use our eyes and identify the floral species the new data point is most likely a member of. However, machines do not have eyes, so how do they decide to label the new data point? 
+
+## KNN
+
+K-nearest neighbours operates by identifying the closest neighbouring data points, sorting them by euclidean distance and using the top **_k_** labelled points to make a decision on the unseen dataset. The choice of **_k_** is up to the user i.e how many data points should we consider for voting? We will discuss how to choose the best value for K in later sections. See below the KNN algorithm in operation when **_k_**=3.
+
+<figure>
+  <img src="knn_eg_4.png" width="100%"/>
+  <figcaption><b>Figure 3</b>: KNN algorithm checks the label of the nearest neighbours. Operating under the assumption that data within a cluster share similar features, the closest group in euclidean space is the best candidate for the new data.</figcaption>
+</figure>
+
+
 </exercise>

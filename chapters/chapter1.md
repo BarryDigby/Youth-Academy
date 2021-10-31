@@ -1,19 +1,13 @@
 ---
 title: 'Week 1: Introduction to Genomics' 
-description:
+description: ''
 prev: null
 next: /chapter2
 id: 1
 type: chapter
 ---
-<exercise id="1" title="What is Genomics?" type="slides">
 
-<slides source="week1_intro_01">
-</slides>
-
-</exercise>
-
-<exercise id="2" title="Basic rules of Genetics">
+<exercise id="1" title="Basic rules of Genetics">
 In the 1860s <span style="color:blue">Gregor Mendel</span> discovered the basic rules of genetics that govern how genes are passed from one organism to it's offspring (referred to as <span style="color:blue">heredity</span> or <span style="color:blue">biological inheritance</span>). Using pea plants, Mendel demonstrated that an organisms genome is organised in a collection of discrete, seperable packets of information, now called <span style="color:blue">genes</span>. Mendel also demonstrated that the physical makeup of an organism could be divided into a series of discrete entities.
 
 ***
@@ -24,12 +18,12 @@ Mendel's research implied that the genetic constitution of an organism (it's <sp
 
 <figure>
   <img src="mendels-pea-plant.jpg" width="100%"/>
-  <figcaption><b>Figure 1</b>: Mendel observed 7 binary traits in pea plants.</figcaption>
+  <figcaption><b>Figure 1</b>: Mendel observed 7 binary traits in pea plants e.g seed shape can be either wrinkled or round.</figcaption>
 </figure>
 
 ***
 
-The conventional train of thought before Mendels experiments were that inhereted traits were 'blended' from parents. Using this logic, by crossing a purple flowered plant with a white flowered plant, one might expect the offspring to be a light pink color - a similar effect of mixing colored paints. Mendel demonstrated this was not the case. By crossing pure-bred purple flowered pea plants with white flowered pea plants Mendel observed that the offspring flower color was purple. The inheritance pattern of this characteristic is considered a <span style="color:blue">dominant trait</span>, as purple flowers are observable in every offspring (<b>Figure 2</b>).
+The conventional train of thought before Mendels experiments was that inhereted traits were 'blended' from parents. Using this logic, by crossing a purple flowered plant with a white flowered plant, one might expect the offspring to be a light pink color - a similar effect of mixing colored paints. Mendel demonstrated this was not the case. By crossing pure-bred purple flowered pea plants with white flowered pea plants Mendel observed that the offspring flower color was purple. The inheritance pattern of this characteristic is considered a <span style="color:blue">dominant trait</span>, as purple flowers are observable in every offspring (<b>Figure 2</b>).
 
 
 From this observation, Mendel proposed his first principle, the <span style="color:blue">principle of uniformity</span> which states that, if two plants that differ in just one trait are crossed, then the resulting offspring will be uniform in the chosen trait.
@@ -74,7 +68,7 @@ Mendel had determined what happened when two hetero/homozygous plants for one tr
 
 </exercise>
 
-<exercise id="3" title="What is a Genome?">
+<exercise id="2" title="What is a Genome?">
 
 The previous section discussed Mendels rules regarding the transfer of genetic information between parents and offspring. In this section we will focus on a biochemical, genetic and computational view of genomes, which will lead to the discussion of genes.
 
@@ -95,7 +89,7 @@ Below in <b>Figure 2</b> are images of human chromosomes (<span style="color:blu
 
 <figure>
   <img src="karyotype.png" width="100%"/>
-  <figcaption><b>Figure 2</b>: Human chromosomes: (a) </figcaption>
+  <figcaption><b>Figure 2</b>: Human chromosomes.</figcaption>
 </figure>
 
 ***
@@ -132,7 +126,7 @@ ATCGACCGCCCCTTGCTTGCAGCCGGGCACTACAGGACCCGCTTGCTCACGGTGCTGTGC
 
 </exercise>
 
-<exercise id="4" title="What is a Gene?">
+<exercise id="3" title="What is a Gene?">
 
 The definition of a gene is fluid (it depends if you ask a geneticist vs. a molecular biologist) - we can compromise with the following definition:
 
@@ -150,7 +144,7 @@ If activated, genes are transcribed into <span style="color:blue">messenger RNAs
 
 ***
 
-One final note on the central dogma. Double stranded DNA is used as the template to produce a single stranded RNA molecule, which uses A/U/G/C (note Thymine is replaced by Uracil in RNA) nucleotide bases. This RNA molecule is then translated to amino acids using <i>triplets of DNA</i>. We can see which amino acid an RNA triplet codes for in the codon table below:
+A note on the method of information transfer: Double stranded DNA is used as the template to produce a single stranded RNA molecule, which uses A/U/G/C (note Thymine is replaced by Uracil in RNA) nucleotide bases. This RNA molecule is then translated to amino acids using <i>triplets of DNA</i>. We can see which amino acid an RNA triplet codes for in the codon table below:
 
 <figure>
   <img src="codon-table.png" width="100%"/>
@@ -252,7 +246,7 @@ Reading frames are shown in the figure above, but are beyond the scope of this c
 
 </exercise>
 
-<exercise id="5" title="Quiz">
+<exercise id="4" title="Quiz">
 
 # Genetics Recap
 
@@ -349,9 +343,9 @@ Go to the [online IGV browser](https://igv.org/app/) and search for the gene `KR
 
 </exercise>
 
-<exercise id="6" title="Coding Warm Up">
+<exercise id="5" title="Coding Warm Up">
 
-Some weeks of the program will be centered around coding. The following set of exercises should serve as an introduction to using R. 
+Most weeks of the program will be centered around coding. The following set of exercises should serve as an introduction to using R. 
 
 ## Variables
 In programming, variables allow us to store information and associate that information with a name. In R, we assign variables by using the assignment operator, an arrow sign `<-` made with a carat and a dash.
@@ -362,7 +356,7 @@ course_name <- "Youth Academy"
 
 In the example above, we store the string value "Youth Academy" in a variable called course\_name. Variable names can't have spaces or symbols in their names other than an underscore (\_). They can't begin with numbers but they can have numbers after the first letter (e.g, var\_1  is OK).
 
-If we need to update a variable but perform the same logical process on it, we can change its value! 
+If we need to update a variable but perform the same logical process on it, we can change its value:
 
 <codeblock id="01_02">
 </codeblock>
@@ -423,7 +417,7 @@ spring_months <- c("March", "April", "May", "June")
 
 In the example above, we created a new variable `spring_months` that contains a character vector. In order to <span style="color:red">c</span>oncatenate the individual character strings to a vector, we use `c()`. 
 
-A few operations you shopuld be able to perform on a vector:
+A few operations you should be able to perform on a vector:
 
 * Check the type of elements in a vector by using `typeof(vector_name)`
 * Check the length of a vector by using `length(vector_name)`
@@ -459,7 +453,7 @@ You may have noticed that mixing data types in a vector might not produce what y
 
 ## Sandbox
 
-Feel free to play around with the codeblock given below, it does not expect any answer so go wild. I'm 99.99% sure you can't break anything...
+Feel free to play around with the codeblock given below, test it out by creating vectors with different data types. You can also perform mathematical operations on numerical vectors (make sure the two vectors in question are of equal length). 
 
 <codeblock id="01_05">
 </codeblock>

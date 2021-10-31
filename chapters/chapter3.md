@@ -1,6 +1,6 @@
 ---
 title: 'Week 3: RNA-Seq' 
-description:
+description: ''
 prev: /chapter2
 next: /chapter4
 id: 3

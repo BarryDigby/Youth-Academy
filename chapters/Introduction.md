@@ -1,6 +1,6 @@
 ---
 title: 'Course Introduction' 
-description: Please take the time to go through this section before beginning the course.
+description: ''
 prev: null
 next: /chapter1
 id: 1
@@ -12,9 +12,9 @@ type: chapter
 You have just opened a section. You can track your progress throughout the week by marking a section as completed (see the button below). 
 
 
-In general, each week will follow a simple structure in terms of sections:
+In general, each week will follow a structure of:
 
-- Introducing a topic
+- Introducing a topic(s)
 
 - A worked example with questions
 
@@ -24,7 +24,7 @@ During the week I recommend covering the introduction section, and if time permi
 
 ***
 
-**Note**: This course is designed so you get hands on experience in handling datasets and coding. I will **not** ask you to write out answers, or learn off definitions (like the ancient methods used in the leaving cert). If you are curious about a topic or piece of code, first try to google the topic yourself and explore further. Alternatively, reach out to me with questions.
+**Note**: This course is designed so you get hands on experience in handling datasets and coding. I will **not** ask you to write out answers, or learn off definitions. If you want to explore a topic further, feel free to reach out to me via email. 
 
 </exercise>
 
@@ -34,7 +34,7 @@ This course will incorporate more and more coding as the it progresses.
 
 When you click 'Run code', the code is sent to a <span style="color:blue">container</span> hosted at a separate website where it is evaluated, and the output is returned on screen for you. Containers are lightweight images of software - this means you don't have to install anything on your computer - you send your code to the container. They are increasingly popular in data science and cloud computing. 
 
-When running a code block for the first time you will see  <span style="color:blue">"Launching Docker container on mybinder.org..."</span>
+**When running a code block for the first time you will see  <span style="color:blue">"Launching Docker container on mybinder.org..."</span>**
 
 Please be patient, the container will take a few minutes to compile. Once it has compiled, running code blocks should be relatively fast thereafter.
 
@@ -48,11 +48,11 @@ The output from the code block should be
 [1] 6
 ```
 
-Do not worry about the `[1]` - this is just `R's` way of saying 'this is line 1 of your output'. The output from the code block is printing the variable `var`, which of course returns "foobar" - the string we assigned to `var` by using the assign operator (`<-`). The second output is the number of characters in the string. We achieved this by using `nchar()`. 
+The output from the code block is printing the variable `var`, which of course returns "foobar" - the string we assigned to `var` by using the assign operator (`<-`). The second output is the number of characters in the string. We achieved this by using the `nchar()` function.
 
 The code block above was used to demonstrate code. You were not required to fill in any empty variables. There will be plenty of these code blocks in the course, particularly when I am explaining how something works in R.
 
-Let's cover user inputs in the next section, these will be used for worksheets and sometimes case studeies. 
+Let's cover user inputs in the next section, these will be used for worksheets and some case study code blocks.
 
 </exercise>
 
@@ -62,12 +62,12 @@ In the worksheets, there will be times when I expect you to fill in the gaps in 
 
 For these code blocks I will typically leave a blank piece of code in the form of `______` which you have to fill in yourself.
 
-**Note**: I will provide the solution to these code blocks if you are stuck, click 'show solution' to view it. 
+**Note**: I will provide the solution to these code blocks - if you are stuck, click 'show solution' to view it.
 
 <codeblock id="int_02">
 </codeblock>
 
-How many nucleotides are in the sequence? 
+How many nucleotides are in the sequence?
 
 <choice>
 <opt text="6">
