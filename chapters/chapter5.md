@@ -125,6 +125,7 @@ Uncomment the lines of code in the codeblock above and answer the following:
 ***
 ## Training the model
 
-
+<codeblock id="05_02">
+</codeblock>
 
 </exercise>
