@@ -11,3 +11,4 @@ dependencies:
   - r-cluster
   - r-gplots
   - r-caret
+  - r-e1071

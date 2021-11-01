@@ -125,6 +125,8 @@ Uncomment the lines of code in the codeblock above and answer the following:
 ***
 ## Training the model
 
+I have saved the previously created subsets of the iris dataset `train` and `test` as `knn_intro.RData`, there is no need to re-type the code to split the dataframe. See th eabove section for inputs to the `knn3()` function, which we will apply below. 
+
 <codeblock id="05_02">
 </codeblock>
 
