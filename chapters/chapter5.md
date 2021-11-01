@@ -123,11 +123,76 @@ Uncomment the lines of code in the codeblock above and answer the following:
 3. Are the training and test partitions reasonably well balanced? 
 
 ***
+
+</exercise>
+
+<exercise id="2" title="Case Study: Iris Classification">
+
 ## Training the model
 
-I have saved the previously created subsets of the iris dataset `train` and `test` as `knn_intro.RData`, there is no need to re-type the code to split the dataframe. See th eabove section for inputs to the `knn3()` function, which we will apply below. 
+I have saved the previously created subsets of the iris dataset `train` and `test` as `knn_intro.RData`, there is no need to re-type the code to split the dataframe. See the above section for inputs to the `knn3()` function, which we will apply below. 
 
 <codeblock id="05_02">
 </codeblock>
+
+***
+
+## Confusion Matrix
+
+Notice that `model_predictions` returns the predicted labels for each sample. We can compare this to the original, correct, **known** class labels of the training dataset using a <span style="color:blue">confusion matrix</span>. **A confusion matrix shows the ways in which our classification model is confused when it makes predictions.**
+
+<figure>
+  <img src="knn_cf_setosa.png" width="100%"/>
+  <figcaption><b>Figure 4</b>: Confusion matrix, focusing on setosa species.</figcaption>
+</figure>
+
+<figure>
+  <img src="knn_cf_versicolor.png" width="100%"/>
+  <figcaption><b>Figure 5</b>: Confusion matrix, focusing on versicolor species.</figcaption>
+</figure>
+
+<figure>
+  <img src="knn_cf_virginica.png" width="100%"/>
+  <figcaption><b>Figure 6</b>: Confusion matrix, focusing on virginica species.</figcaption>
+</figure>
+
+***
+
+The above is a simple view of a confusion matrix. They can be used to calculate numerous metrics such as precision, recall, sensitivity, specificity etc, however, for now we will focus on accuracy:
+
+```R
+# recall 105 samples in training data
+# 3 samples were incorrectly labelled by our model
+> 102/105
+[1] 0.9714286
+```
+
+i.e 97.14% model accuracy which was reported using `print(train_cfm)`.
+
+## Testing our model
+
+We have trained our model, and assessed how well it performed on the training set. Now we will use the model to predict the unseen test dataset. Recall we have the 'answers to the test' for the test dataset, and can evaluate the models performance using a confusion matrix again.
+
+<codeblock id="05_03">
+</codeblock>
+
+***
+
+Our model reports an accuracy of 97.78%, great! 
+
+## Predicting unseen data
+
+As a proof of concept, lets add a new sample to the test dataset, a flower whose species is unknown (recall **Figure 2**).
+
+<codeblock id="05_04">
+</codeblock>
+
+***
+
+The new data sample we collected is the last row of our test dataset (we manually added it), and as such will be the last item in the vector `test_predictions`. 
+
+
+
+Please add the line of code: `print(test_predictions[length(test_predictions)])` to the code block above to reveal which species our algorithm classified the new data sample as. 
 
 </exercise>

@@ -1,6 +1,7 @@
 # load iris, train and test data + library
 load("data/knn_intro.RData")
 library(caret)
+set.seed(123)
 
 # create training model 
 model_fit <- knn3(train[,1:4], train[,5], k = 10)
