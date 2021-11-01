@@ -13,7 +13,7 @@ Last week we covered the concept of distances in euclidean space, and how machin
 
 ***
 
-This week we will cover classification using K-nearest neighbours. Many of the concepts from last week are carried forward to this week, however the objective of classification tasks is not to perform an exploratory data analysis, but rather we are interested in training a model to learn the features of a specific group (cancer type, flower species) and to correctly place new 'unseen data' into the correct group.
+This week we will cover classification using K-nearest neighbours. Many of the concepts from last week are carried forward to this week, however the objective of classification tasks is not to perform an exploratory data analysis, but rather we are interested in training a model to correctly place new 'unseen data' into the correct group (flower species, cancer type, etc.).
 
 ***
 

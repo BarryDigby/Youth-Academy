@@ -10,4 +10,4 @@ dependencies:
   - r-rcolorbrewer
   - r-cluster
   - r-gplots
-  - r-dendextend
+  - r-caret
