@@ -1,9 +1,9 @@
 {
-    "name": "supervised-ML-case-studies-course",
+    "name": "youth-academy_GDS-2021",
     "private": true,
-    "description": "Supervised machine learning case studies in R! A free interactive course ",
+    "description": "Introductory course to GDS.",
     "version": "0.0.1",
-    "author": "Julia Silge <julia.silge@gmail.com>",
+    "author": "Barry Digby <b.digby1@nuigalway.ie>",
     "dependencies": {
         "@illinois/react-use-local-storage": "^1.1.0",
         "@jupyterlab/outputarea": "^0.19.1",
@@ -53,6 +53,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/juliasilge/supervised-ML-case-studies-course"
+        "url": "https://github.com/BarryDigby/Youth-Academy"
     }
 }

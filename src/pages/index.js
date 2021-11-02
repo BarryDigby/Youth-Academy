@@ -18,7 +18,7 @@ export default ({ data }) => {
         <Layout isHome>
             <Logo className={classes.logo} aria-label={siteMetadata.title} />
             <section>
-                <h1 className={classes.subtitle}>A Free, Interactive Course On Genomics</h1>
+                <h1 className={classes.subtitle}>An Interactive Course On Genomics</h1>
                 <div className={classes.introduction}>
                 <p>
                     Rapid advancements in high-throughput technologies used to sequence the human genome have led to an unprecedented increase in the availability and use of genomics data. The analysis of these large, complex datasets requires a new generation of highly trained scientists who possess not only a sound understanding of the underlying biological principles and technologies, but also the necessary quantitative and computational skills.
