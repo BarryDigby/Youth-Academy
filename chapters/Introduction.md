@@ -24,7 +24,7 @@ During the week I recommend covering the introduction section, and if time permi
 
 ***
 
-**Note**: This course is designed so you get hands on experience in handling datasets and coding. I will **not** ask you to write out answers, or learn off definitions. If you want to explore a topic further, feel free to reach out to me via email. 
+**Note**: This course is designed so you get hands on experience in handling datasets and coding. I will **not** ask you to write out answers, or learn off definitions.
 
 </exercise>
 
@@ -82,6 +82,6 @@ The above examples are obviously trivial, but hopefully now you are comfortable 
 
 ***
 
-If you need help using the website, notice any errors (nonsensical code blocks) or have any feedback in general, please do not hesistate to contact me at `b.digby1@nuigalway.ie`. Include 'Youth Academy' in the title of the email to grab my attention :)
+If you notice any errors (nonsensical code blocks) or have any feedback in general, please do not hesitate to contact the youth academy director for secondary schools, Stephanie: stephanie.neylon@nuigalway.ie
 
 </exercise>
