@@ -8,9 +8,20 @@ type: chapter
 ---
 
 <exercise id="1" title="Basic rules of Genetics">
-In the 1860s <span style="color:blue">Gregor Mendel</span> discovered the basic rules of genetics that govern how genes are passed from one organism to it's offspring (referred to as <span style="color:blue">heredity</span> or <span style="color:blue">biological inheritance</span>). Using pea plants, Mendel demonstrated that an organisms genome is organised in a collection of discrete, seperable packets of information, now called <span style="color:blue">genes</span>. Mendel also demonstrated that the physical makeup of an organism could be divided into a series of discrete entities.
+In the 1860s <span style="color:blue">Gregor Mendel</span> discovered the basic rules of genetics that govern how traits are passed from one organism to it's offspring (referred to as <span style="color:blue">heredity</span> or <span style="color:blue">biological inheritance</span>). Using pea plants, Mendel demonstrated that an organisms genome is organised in a collection of discrete, seperable packets of information, now known as <span style="color:blue">genes</span>.
 
 ***
+### Why was this important? 
+
+The first speculations surrounding heredity arose from the Greeks, and few new ideas arose in the two millenia leading up to Mendels discovery. Two main ideas were put forth to explain how traits are passed from parent to offspring:
+
+- <b>Hippocrates</b>: Each organ in the body secretes 'gemmules', which can travel freely around the body and when passed to offspring, are used as building blocks to reassemble themselves into a newly developed fetus.
+
+- <b>Aristotle</b>: Emphasized the importance of blood, offspring were developed under the influence of 'hereditary essences' in the blood. Most likely the origin of phrases such as "family blood lines" etc.
+
+These theories are resonably sound at a high level, the concept of "material" transfer is present, but no tests had been performed to test these ideas. Both Darwin and his cousin Francis Galton debunked these theories with rabbits and mice.. 
+
+### Genotypes, Phenotypes.
 
 Mendel's research implied that the genetic constitution of an organism (it's <span style="color:blue">genotype</span>) could be divided into thousands of genes, whilst in parallel, the observable, 'outward appearace' of an organism (it's <span style="color:blue">phenotype</span>) could be subdivided into a large number of discrete physical traits, which are controlled by distinct genes (in conjunction with environmental factors). See the figure below for 7 phenotypic traits Mendel observed in pea plants:
 
@@ -23,10 +34,12 @@ Mendel's research implied that the genetic constitution of an organism (it's <sp
 
 ***
 
-The conventional train of thought before Mendels experiments was that inhereted traits were 'blended' from parents. Using this logic, by crossing a purple flowered plant with a white flowered plant, one might expect the offspring to be a light pink color - a similar effect of mixing colored paints. Mendel demonstrated this was not the case. By crossing pure-bred purple flowered pea plants with white flowered pea plants Mendel observed that the offspring flower color was purple. The inheritance pattern of this characteristic is considered a <span style="color:blue">dominant trait</span>, as purple flowers are observable in every offspring (<b>Figure 2</b>).
+### Mendels 1st rule:
+
+The conventional train of thought before Mendels experiments was that inhereted traits were 'blended' from parents (recall Aristotle's blood hypothesis). Using this logic, by crossing a purple flowered plant with a white flowered plant, one might expect the offspring to be a light pink color - a similar effect of mixing colored paints. Mendel demonstrated this was not the case. By crossing pure-bred purple flowered pea plants with white flowered pea plants Mendel observed that the offspring flower color was purple. The inheritance pattern of this characteristic is considered a <span style="color:blue">dominant trait</span>, as purple flowers are observable in every offspring (<b>Figure 2</b>).
 
 
-From this observation, Mendel proposed his first principle, the <span style="color:blue">principle of uniformity</span> which states that, if two plants that differ in just one trait are crossed, then the resulting offspring will be uniform in the chosen trait.
+From this observation, Mendel proposed his first principle, the <span style="color:blue">principle of uniformity/dominance</span> which states that, if two plants that differ in just one trait are crossed, then the resulting offspring will be uniform in the chosen trait.
 
 <span style="color:red">Note:</span> 
 - "Pure-bred" in this scenario refers to a <span style="color:blue">homozygous</span> genotype, i.e PP or pp. 
@@ -39,6 +52,8 @@ From this observation, Mendel proposed his first principle, the <span style="col
 </figure>
 
 ***
+
+### Mendels 2nd rule:
 
 In the above figure, there are no white flowered phenotypes observable in the first generation of offspring (F1). Mendel wanted to test if the recessive trait (white flowers) were still present in the population, or if the dominant trait had transcended all subsequent generations. By looking at the above figure, we can see the answer. The recessive trait is indeed present - it is encoded as a lowercase p , whilst uppercase P represents the dominant purple trait - each offspring is a heterozygote (Pp) and as such are all carriers of the recessive genotype. 
 
@@ -57,6 +72,7 @@ In order to test this (recall Mendel was recording observable traits), Mendel se
 
 Having concluded that 'blending' is not an expected outcome of parental trait combinations, Mendel hypothesized that each parent contributed some particulate matter towards the offspring, termed elementin. We now know that elementin is the DNA sequence (gene) that encodes proteins governing observable traits. As the structure of DNA was roughly 90 years away from being discovered, Mendel continued his experiments on peas, with a focus on the distribution of elementin amongst offspring. 
 
+### Mendels 3rd rule:
 
 Mendel had determined what happened when two hetero/homozygous plants for one trait are crossed, and now wanted to determine what the outcome was when tracking two traits. He began by crossing pure-bred plants that were dominant and recessive for the respective traits (seed color, seed shape), which as we know, will always result in heterozygote F1 generation (RrYy). When the F1 population is crossed (RrYy x RrYy), Mendel observed a ratio of 9:3:3:1 (as depicted in the figure below). These results reflected the 3:1 ratio observed earlier - note how when we choose one trait to study from the F2 population, let's use seed color, we can observe a 3:1 ratio amongst the wrinkled seeds, and a 9:3 (aka 3:1) ratio amongst the smooth seeds. These results were as if two monohybrid crosses were performed, leading Mendel to postulate that alleles segregate independently of each other, forming Mendels third law of <span style="color:blue">independent assortment</span>.
 
