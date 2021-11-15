@@ -1,7 +1,6 @@
 # read in the data frame
 df <- read.table("data/stroke-data.csv", sep=",", header=T)
 
-# inspect the columns 
-print(colnames(df))
+# Remove the variables 'id' and 'ever_married' using subset()
 
-# try accessing different columns below. (no right or wrong way here)
+# Check the dimensions of the subset DF.. 
