@@ -6,87 +6,9 @@ next: /chapter4
 id: 3
 type: chapter
 ---
-<exercise id="1" title="High Throughput Sequencing">
-Before jumping into this weeks topic on RNA-Sequencing, we first need to cover high-throughput sequencing (also known as next-generation sequencing NGS).
+<exercise id="1" title="Gene Expression">
 
-&nbsp;
-
-In week 1 we covered the basics of genetics, the concept of a gene and how they are represented computationally. But how did we manage to figure out the sequence of a gene in the first place? 
-
-## Sequences, Sequences and Sequences
-
-<span style="color:blue">Frederick Sanger</span> first rose to fame for succesfully solving the sequence of the protein insulin via a series of degredation reactions. By utilising fluorodinitrobenzene (FDNB) to tag and identify the termini amino acids of insulin’s two chains as Glyceine and Phenylalanine, Sanger proceeded to degrade the protein using enzyme hydrolysis and applying 5,5'-dithiobis-2-nitrobenzoic acid (DTNB) to identify the amino acids at the position of the fresh break - much like snapping beads off a necklace. Sanger was able to determine the amino acid sequence of insulin and was awarded the nobel prize in chemistry in 1958. 
-
-
-<figure>
-  <img src="insulin-struct.png" width="100%">
-  <figcaption><b>Figure 1</b>: Insulin amino acid sequence. Lines represent 2 inter-chain disulfide bonds and one intra-chain disulfide bond, respectively.</figcaption>
-</figure>
-
-***
-
-Next, Sanger turned his attention to DNA at the university of Cambridge. The chemical techniques previously employed on proteins were not working on DNA - there are only 4 bases compared to 20 amino acids - the fragmented sequences were much longer and far too similar to each other to correctly infer the original sequence. To combat this, Sanger ditched previous techniques and decided to 'eavesdrop' on the process of DNA synthesis, taking note of each base being added one by one. 
-
-### PCR
-
-<span style="color:blue">Polymersase chain reaction (PCR) </span> at the time, was a recently developed technology used to amplify DNA sequences. Using a target region of DNA as starting material, PCR requires DNA <span style="color:blue">primers</span> that are designed specifically for the region of interest, and the enzyme <span style="color:blue">Taq polymerase</span>. 
-
-<figure>
-  <img src="PCR-1.png" width="100%">
-  <figcaption><b>Figure 2</b>: Primers designed for region of interest.</figcaption>
-</figure>
-
-***
-
-Following a heat reaction at 90&deg;C to <span style="color:blue">denature</span> DNA (separate double stranded molecule into two single strand molecules), the reaction is cooled to 55&deg;C to allow <span style="color:blue">annealing</span> of the primers to their complementary sequence on the single DNA template strand. The reaction is then raised to 72&deg;C where Taq polymerase <span style="color:blue">extends</span> the primers via DNA synthesis, producing two new strands of double stranded DNA from the original. 
-
-**Note**: The reaction contains free deoxyribonucleotides (dNTPs), which are added to the primer via Taq polymerase.
-
-<figure>
-  <img src="PCR-2.png" width="100%">
-  <figcaption><b>Figure 3</b>: Primer annealing, extension</figcaption>
-</figure>
-
-
-***
-### Sanger Sequencing
-
-As aforementioned, Sanger wanted to eavesdrop on the process of PCR to monitor each base being added by Taq polymerase. This was nigh on impossible as the reactions happened at breakneck speed, Sanger was unable to catch the intermediate steps during the process of DNA extension. 
-
-***
-
-To overcome this problem, Sanger tweaked traditional PCR by using <span style="color:blue">dideoxynucleoside triphosphates (ddNTPs)</span> - chemically modified dNTPs which lacked a 3' hydroxyl group that was crucial in forming a bond with the incoming dNTP, thereby ending the process of DNA extension prematurely. This new technique was dubbed <span style="color:blue">chain termination PCR</span>. 
-
-***
-
-In practice, a smaller ratio of ddNTPS are added to a larger pool of dNTPs and PCR is carried out. The net result from traditional PCR would be millions of copies of the original sequence, however, with Sanger Sequencing, there were millions of sequences of the original copy of <u>varying lengths and all ending in a ddNTP</u>. 
-
-***
-
-Using gel electrophoresis, the sequences were sorted by size. As ddNTPs were added at random, short sequences could be used to infer the beginning of the DNA sequence, whilst longer sequences would help identify the middle and end as shown in the figure below. How did they know which base was which? Each of the four modified ddNTPs carried a distinct fluorescent label. The emitted fluorescence signal from each excited fluorescent dye determines the identity of the nucleotide in the original DNA template.
-
-***
-
-<figure>
-  <img src="sanger.png" width="100%">
-  <figcaption><b>Figure 4</b>: Sanger Sequencing. </figcaption>
-</figure>
-
-***
-### Second Generation Sequencing 
-I will provide an embedded video from Illumina to describe this section. It is worthwhile noting that as a bioinformatician, it is unlikely that you will ever have to perform any of these experiments. Still, it is nice to know where our data comes from.
-
-***
-
-<iframe src="https://www.youtube.com/embed/fCd6B5HRaZ8" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:425px;width:100%;border:none;overflow:hidden;" allowfullscreen></iframe>
-
-</exercise>
-
-<exercise id="2" title="RNA Sequencing">
-
-## Motivation
-
-Recall the image from week one, a schematic of how genes are transcribed to mRNA, and translated into a functional protein.
+Recall the image from week one, a schematic of the central dogma depicting the transfer of information from DNA to RNA to protein. In the following sections we will flesh this out and show how it relates to genomic data science!
 
 <figure>
   <img src="central-dogma.png" width="100%"/>
@@ -95,20 +17,156 @@ Recall the image from week one, a schematic of how genes are transcribed to mRNA
 
 ***
 
-Researchers use RNA-Seq to study the changes in gene expression between two (or more) conditions of interest. For example, we might be interested in comparing a 'normal' healthy lung tissue with a cancerous 'tumor' lung tissue. By capturing all of the RNA material in each cell, we are in essence taking a snapshot of what genes are being actively transcribed to mRNA - a proxy for identifying which genes are switched on or off in the tissue of interest.
+Mendel demonstrated that phenotypic traits (outward appearances) are controlled by 'packets of information' which we now know are genes - stretches of DNA in our genome. Mendel <b> did not know </b> that genes were the template for proteins, or even try to speculate how genes could affect phenotypes.
 
-## RNA Library Prep
+## Linking Genes to Proteins
 
-1. RNA is isolated from cells and treated with Deoxyribonuclease (DNase) to deplete any DNA in the sample. 
+Years later (1940s) George Beadle and Edward Tatum conducted a series of experiments on bread mould that showed a clear connection between genes and enzymes. Note: enzymes are proteins that catalyze chemical reactions, without themselves being consumed in the process. In this example, mould enzymes break down sugars, salts, vitamins into building blocks (amino acids) needed by the mould to survive.
 
-2. Many types of RNA molecules exist, researchers can choose to 'fish out' mRNAs by using PolyA selection protocols. (Mature mRNAs are tagged with a stretch of contiguous adenosine bases - hence the name poly adenylated tail.)
 
-3. The RNA templates are reverse transcribed to complementary DNA (cDNA) as DNA is more stable, and compatible with the enzymes used in sequencing technologies (Taq polymerase).
+By using x-rays on mould spores, Beadle and Tatum created mutants that could not grow when given a minimal food source of sugar, salts and 1 vitamin - where normally the mould would thrive. This meant that the mutant mould could not make (synthesize) an essential molecule required for growth on the minimal food source - something was missing or broken!
+
+
+To figure out which process was 'broken', Beadle and Tatum set up test tubes with amino acids for the mutant mould. They found that the mutant mould grew on an Arginine substrate, which meant that the x-ray damage had broken the gene responsible for creating a protein involved in Arginine synthesis, ultimately starving the mould as it could not convert the food into building blocks for life.
+
+<figure>
+  <img src="mould.png" width="100%"/>
+  <figcaption><b>Figure 2</b>: Beadles and Tatums experiment: The mutant mould </figcaption>
+</figure>
 
 ***
 
-The cDNA is then subjected to high-throughput sequencing techniques outlined in the Illumina video above. 
+## How is DNA converted to a Protein?
+First, the information encoded in a gene is copied into an RNA molecule known as­ ­<span style="color:blue"> pre-messenger RNA (pre-mRNA)</span>. This step, called <span style="color:red">transcription</span>, takes place in the nucleus. The pre-mRNA is then processed into a finished <span style="color:blue">messenger RNA (mRNA)</span> that moves through a nuclear pore into the cytoplasm. Here, the information encoded in the mRNA is converted into the sequence of amino acids in a polypeptide chain, which is processed and folded to form a protein. This step is called ­<span style="color:red">translation</span>.
 
+<figure>
+  <img src="flow.png" width="75%"/>
+  <figcaption><b>Figure 3</b>: The flow of genetic information, including cellular location.</figcaption>
+</figure>
+
+***
+# Transcription produces genetic messages
+
+Transcription begins when the double stranded DNA is unwound and one strand is used as a template for making pre-mRNA. It involves several steps:
+
+1. <span style="color:red"> Initiation </span>: The enzyme RNA polymerase binds to a specific location in DNA called a promoter region - telling the enzyme "this is where the gene starts". (Figure 4 left)
+
+2. <span style="color:red"> Elongation </span>: RNA polymerase reads the nucleotide sequence of the template DNA strand. As it moves along, it inserts and links together complementary RNA nucleotides to form a pre-mRNA molecule. (Figure 4 right)
+
+3. <span style="color:red"> Termination </span>: The RNA polymerase breaks the link between the template DNA strand and the pre-mRNA molecule, releasing the pre-mRNA. The DNA reforms it's double helix. (Figure 5)
+
+<figure>
+  <img src="transcription.png" width="100%"/>
+  <figcaption><b>Figure 4</b>: Initiation and Elongation steps in transcription.</figcaption>
+</figure>
+
+<figure>
+  <img src="trans_2.png" width="100%"/>
+  <figcaption><b>Figure 5</b>: Termination of Transcription.</figcaption>
+</figure>
+
+***
+
+## Messenger RNA Processing
+
+pre-mRNAs are processed in the nucleus to remove introns (nucleotide sequences present in genes that are not translated into the amino acid sequence of a protein). Introns occur between exons, the nucleotide sequences that remain in the mRNA and are translated into the amino acid sequence of a protein. 
+
+As introns are removed, the exons are spliced together to form mature mRNA molecules. I will show you an example of this later with real sequencing reads from yeast, but for now a diagram will suffice:
+
+<figure>
+  <img src="splicing.png" width="100%"/>
+  <figcaption><b>Figure 6</b>: pre-mRNA to mRNA splicing.</figcaption>
+</figure>
+
+***
+## Messenger RNA Translation
+
+Some definitions are required before describing translation:
+
+- <span style="color:blue">Ribosomes</span>: A complex (made of ribosomal RNA units) that aid in the production of proteins.
+
+- <span style="color:blue">transfer RNA (tRNA)</span>: A small RNA unit that contains a specific binding site for each amino acid. The binding site is determined by the anticodon.
+
+- <span style="color:blue">anticodon</span>: 3 nucleotide molecules that bind in complimentary fashion to the mRNA codons (3 bases). 
+
+Translation, like transcription, has three steps: initiation, elongation, and termination:
+
+1. <span style="color:red"> Initiation </span>: The tRNA carrying the amino acid methionine (and the complimentary anticodon to AUG) binds to the mRNA. AUG signals the start site of protiens, and is the first amino acid in all proteins (the figure below does not show the start of the polypeptide..)
+
+2. <span style="color:red"> Elongation </span>: As new tRNA molecules are recruited to the ribosome, the amino acids form a <b>peptide bond</b>, forming a chain of amino acids (i.e a poly peptide chain).
+
+3. <span style="color:red"> Termination </span>: Termination occurs when the ribosome reaches a stop codon. The mature peptide is relased, and folded into a 3-D structure.
+
+<figure>
+  <img src="translation_med.jpeg" width="80%"/>
+  <figcaption><b>Figure 7</b>: Protein Translation</figcaption>
+</figure>
+
+***
+
+## Questionnaire 
+
+Run `GEXP_1` zoom poll. 
+
+</exercise>
+
+<exercise id="2" title="RNA Sequencing">
+
+## Motivation
+
+
+<figure>
+  <img src="tumor_norm.png" width="100%"/>
+  <figcaption><b>Figure 1</b>: Schematic of gene expression in tumor and normal cells.</figcaption>
+</figure>
+
+***
+- What is the genetic mechanism underlying the differences between the normal and tumor cells? 
+
+- We want to look at the differences in gene expression - which genes are switched on or off in the cells? 
+
+High Throughput Sequencing allows us to capture the RNA in a cell and quantify the expression of genes - letting us know precisely what genes are turned on or off, and how much each gene is expressed. RNA-Sequencing (RNA-Seq) is divided into three steps:
+
+1. Library Preparation
+
+2. Sequencing
+
+3. Data Analysis (that's us!)
+
+***
+## Library Preparation
+
+<figure>
+  <img src="prep.png" width="100%"/>
+  <figcaption><b>Figure 2</b>: Schematic of RNA Seq library preparation.</figcaption>
+</figure>
+
+
+***
+
+1. Cells are burst open, and RNA is isolated and DNA is removed.
+
+2. We need to cut the RNA into smaller fragments - the sequencing machine can only handle sizes of 200-300 nucleotides.
+
+3. The fragmented RNA is converted to DNA (DNA is more stable than RNA, and we do not lose any information). 
+
+4. Sequencing adapters (human designed sequences) are added to the newly synthesized DNA. 
+
+5. PCR is used to make millions of copies of the fragmented sequences.
+
+6. The sample is checked - are the lenghts of the amplified fragments ok? (200-300nt) and do we have enough RNA for the experiemnt.
+
+
+***
+
+## Sequencing
+
+<figure>
+  <img src="god.png" width="100%"/>
+  <figcaption><b>Figure 3</b>: Schematic of Sequencing by flourescent probes.</figcaption>
+</figure>
+
+***
 ## FASTQ Files
 Let's take a look at the file returned from a sequencing machine, called FASTQ files. Below are the first 4 reads from a sequencing run.
 
@@ -145,14 +203,27 @@ BBBBBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFFFFFFFFFFFFFFFFFFFFFFFFF
 
 <figure>
   <img src="ASCII.png" width="100%"/>
-  <figcaption><b>Figure 2</b>: Phred scores assigned to each called base.</figcaption>
+  <figcaption><b>Figure 4</b>: Phred scores assigned to each called base.</figcaption>
 </figure>
 
 ***
 
+## Quality Control 
+
+Reads that are poor quality (PHRED score) are removed from our samples, and reads that have adapters must be removed. This can happen when fragments that are too short enter the sequencing machine and the adapters end up being sequenced, not the RNA sequence.
+
 ## Genome Alignment
 
-Now that we have all of our RNA seq reads in a FASTQ file (one file per sample sequenced), we need to map them back to the reference genome in order to determine which gene they came from. In the video below, we will take a look at aligned RNA-Seq reads in a BAM file, and view them using IGV. This should help you visualise the concept of genome alignment. 
+Now that we have all of our RNA seq reads in a FASTQ file, we need to map them back to the reference genome in order to determine which gene they came from.
+
+<figure>
+  <img src="kmers.png" width="90%"/>
+  <figcaption><b>Figure 5</b>: Genome alignment, the sequencing reads have been split into kmers (black font) and aligned back to the reference genome as kmers.</figcaption>
+</figure>
+
+***
+
+ In the video below, we will take a look at aligned RNA-Seq reads in a BAM file, and view them using IGV. This should help you visualise the concept of genome alignment. 
 
 
 To participate in this video, you will need to download two files:
@@ -328,182 +399,29 @@ In the plot, statistically significance is denoted by an asterisk `*`. Asterisks
 
 <exercise id="4" title="Worksheet">
 
-## High Throughput Sequencing
+I will show you how to make a comparison between groups (Normal vs. Tumor) using the `stat_compare_means()` function. You will then split into groups and make boxplots for 5 genes in a Tumor vs. Normal comparison. You will have to report:
 
-1. What enzyme is used in PCR to elongate the DNA primer?
+1. Which genes are up-regulated in Tumor samples
 
-    <choice id="1">
-    <opt text="DNA primers">
-    Not quite, DNA primers are used as a starting guide.</opt>
-    <opt text="Taq polymerase" correct=true>
-    Correct, Taq polymerase is used to add nucleotides to the primer. (BTW: anything ending in 'ase' is usually an enzyme!</opt>
-    <opt text="ddNTPs">
-    Not quite, ddNTPs are added to the growing DNA strand in chain termination PCR.</opt>
-    </choice>
+2. Are the results statistically significant?
 
-2. In PCR, annealing allows:
-
-    <choice id="2">
-    <opt text="The separation of double stranded DNA to single strand DNA">
-    Not quite, this occurs at 90&deg;C and is called denaturation</opt>
-    <opt text="Primers to attach to the complimentary DNA strand" correct=true>
-    Correct, annealing involves the complimentary binding of primers to template DNA</opt>
-    <opt text="Taq polymersase to extend primers">
-    Not quite, this occurs at 72&deg;C and is called extension</opt>
-    </choice>
-
-3. Chain termination PCR refers to:
-
-    <choice id="3">
-    <opt text="The premature termination of PCR extension" correct=true>
-    Correct, the addition of a single ddNTPs prevents the addition of dNTPs.</opt>
-    <opt text="The premature termination of PCR annealing">
-    Not quite, Sanger sequencing requires primers to bind to the template like regular PCR</opt>
-    <opt text="The exclusive use of dNTPs">
-    Not quite, Sanger sequencing uses both ddNTPS and dNTPs</opt>
-    </choice>
-
-4. How do researchers recover information about which ddNTP base (A, T, G, C) was added?
-
-    <choice id="4">
-    <opt text="By analyzing the chemical composition of the ddTNP">
-    Not quite. They could do this, but it would be extremely intensive work.</opt>
-    <opt text="Enzyme reactions to 'break off' the final base">
-    Not quite, this approach was used to recover the amino acid structure of insulin</opt>
-    <opt text="Flourescently-labelled nucleotide bases" correct=true>
-    Correct! By exciting the ddNTP using light, a distinct flourescent label is emitted</opt>
-    </choice>
-
-## RNA-Sequencing
-
-1. In general, RNA-Seqencing is used to analyze:
-
-    <choice id="5">
-    <opt text="Changes in our DNA sequence">
-    Not quite. RNA-Seq is concerned with quantifying the intermediate product of genes (mRNA), not the DNA itself.</opt>
-    <opt text="The quantity and composition of proteins produced by a cell">
-    Close, but not quite. RNA-Seq studies the intermediate molecule mRNA. Proteomics is a different discipline.</opt>
-    <opt text="The quantity and composition of mRNA produced in a cell" correct=true>
-    Correct! We can only make inferences at the genomic level.</opt>
-    </choice>
-
-2. Recall week 1: **"Double stranded DNA is used as the template to produce a single stranded RNA molecule, which uses A/U/G/C (note Thymine is replaced by Uracil in RNA) nucleotide bases."**
-   
-   
-   Translate the following DNA sequence to RNA: 
-
-   \- `ATG TCG TTC ATC`
-
-    <choice id="6">
-    <opt text="ATG TCG TTC ATC">
-    Not quite, this is the template DNA sequence</opt>
-    <opt text="UAC AGC AAG UAG" correct=true>
-    Nice work.</opt>
-    <opt text="AUG UCG UUC AUC">
-    Close, but not quite. Recall the DNA is used as a template to produce a complimentary strand (not directly mimick the template) </opt>
-    </choice>
+3. If you have time, google the up-regulated genes and note which cancers it might be. 
 
 
-3. Inspect the image below, paying attention to the coverage of reads (histogram showing quantity of mapped RNA-Seq reads to genes).
-
-<figure>
-  <img src="igv-diff-exp.png" width="100%"/>
-  <figcaption><b>Figure 4</b>: IGV view of ADE1 (left) & KIN3 (right)</figcaption>
-</figure>
-
-***
-
-What statement can we make about `KIN3`?
-
-<choice id="7">
-<opt text="The KIN3 gene is highly expressed">
-Not quite, particularly in comparison to ADE1</opt>
-<opt text="The KIN3 gene is not expressed" correct=true>
-Correct, for this particular sample. (We would need at least 3 samples to test this statistically)</opt>
-</choice>
-
-## TCGA Dataset
-
-In this section you are tasked with making plots and answering questions about them..
-
-1. Make a boxplot of `GATA3` expression across `BRCA`, `OV` and `LUSC` cancer types.
-
-<codeblock id="03_04">
-</codeblock>
-
-In which cancer subtype is `GATA3` expression the highest? 
-
-<choice id="8">
-<opt text="Ovarian serous cystadenocarcinoma">
-Not quite</opt>
-<opt text="Lung squamous ell carcinoma">
-Not quite</opt>
-<opt text="Breast Cancer" correct=true>
-Correct, the boxplot indicates expression is highest in `BRCA`.</opt>
-</choice>
-
-2. Scenario given below:
-
-Your supervisor is interested in `GATA3` expression in `LUSC` vs. `OV` (she/he does not care about `BRCA`). She/he wants you to perform a statistical test to check if `GATA3` expression is higher in `LUSC` when compared to `OV`. Perform the following steps: 
-
-- Subset the dataframe to remove `BRCA` samples. (Using `subset()` and logical operators)
-- Set up the comparison `OV` vs. `LUSC` using a list().
-- Produce a boxplot of `GATA3` expression in `OV` & `LUSC`, using: 
-    - The `"lancet"` color palette.
-    - Color the fill by `"cancer_type"`
-    - Use `theme_bw()` for `ggtheme`
-    - Use an empty string for `xlab`
-    - Use `"GATA3 Expression"` as the `ylab`
-    - Insert `"Week 3 Worksheet"` as the plot `title`
-- For `stat_compare_means()`:
-    - Insert the comparison list
-    - Use `"p.format"` in place of `"p.signif"` for the label. 
-
-<codeblock id="03_05">
+<codeblock id="333">
 </codeblock>
 
 ***
 
-What is the null hypothesis in this scenario?
-
-<choice id="9">
-<opt text="There is no difference in GATA3 expression between LUSC, OV patients" correct=true>
-Indeed! This is the null hypothesis (which we will try to reject).</opt>
-<opt text="There is a difference in GATA3 expression between LUSC, OV patients">
-Not quite, this is the alternative hypothesis.</opt>
-</choice>
+In the gene expression dataset you have to work on, the two levels are `Tumor` and `Normal`, which are under the column called `sample_type`. You should plot `sample_type` on the x-axis, and substitute the gene name into the y-axis argument. 
 
 
-From the p-value, can we conclude that GATA3 expression is higher in `LUSC` samples?
+In order to make the comparison, use the same code as above, but switch out `VC` and `OJ` for `Tumor` and `Normal`, respectively. 
 
-<choice id="10">
-<opt text="Yes :) " correct=true>
-A very small p-value of 1.8e-08 indicates we can reject the null hypothesis and accept the alternative.</opt>
-<opt text="No :( ">
-Not quite, the p-value is very very small....</opt>
-</choice>
+The 5 genes in the dataset are: `PTEN`, `MUC1`, `ESR1`, `XBP1`, `GATA3`. Good luck! 
 
 
-**Bonus:**
-
-We can see that GATA3 expression is higher in `LUSC`, but we dont want to eyeball results! Below is the output of the `T.test` performed under the hood by `ggpubr()`:
-
-```console
-> t.test(GATA3 ~ cancer_type, data=subset_expr)
-
-	Welch Two Sample t-test
-
-data:  GATA3 by cancer_type
-t = 5.8489, df = 210.18, p-value = 1.874e-08
-alternative hypothesis: true difference in means between group LUSC and group OV is not equal to 0
-95 percent confidence interval:
- 0.3096700 0.6245342
-sample estimates:
-mean in group LUSC   mean in group OV 
-         -3.758442          -4.225544 
-```
-
-Pay attention to the group means at the bottom of the output. 
-
+<codeblock id="3333">
+</codeblock>
 
 </exercise>
