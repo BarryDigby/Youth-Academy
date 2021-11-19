@@ -483,7 +483,7 @@ Answer the following questions regarding the plot:
 
 ***
 
-## Does Supplement have an effect?
+## Does Supplement have an effect? 
 
 Great! We can make a plot that clearly shows an increase in tooth length when the vitamin C dose is increased. Now, let's use `facet.by` to produce the same plot, but at each level of dose, we will be able to see both Ascorbic Acid and Orange juice side by side.
 
