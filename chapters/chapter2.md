@@ -496,7 +496,7 @@ Great! We can make a plot that clearly shows an increase in tooth length when th
 <codeblock id="02_13">
 </codeblock>
 
-Answer the following questions: 
+Answer the following questions:
 
 1. Overall, which supplement is more effective at increasing tooth length?
 
