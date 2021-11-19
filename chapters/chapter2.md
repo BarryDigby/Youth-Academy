@@ -491,7 +491,7 @@ Great! We can make a plot that clearly shows an increase in tooth length when th
 
 - Change the x-axis to `supp`
 
-- Finally, use `dose` in `facet.by`.
+- Finally, use `dose` in `facet.by`
 
 <codeblock id="02_13">
 </codeblock>
