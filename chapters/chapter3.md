@@ -413,13 +413,12 @@ I will show you how to make a comparison between groups (Normal vs. Tumor) using
 
 ***
 
-In the gene expression dataset you have to work on, the two levels are `Tumor` and `Normal`, which are under the column called `sample_type`. You should plot `sample_type` on the x-axis, and substitute the gene name into the y-axis argument. 
+In the gene expression dataset you have to work on, the two levels are `Tumor` and `Normal`, which are under the column called `sample_type`. You should plot `sample_type` on the x-axis, and substitute the gene name into the y-axis argument.
 
 
 In order to make the comparison, use the same code as above, but switch out `VC` and `OJ` for `Tumor` and `Normal`, respectively. 
 
-The 5 genes in the dataset are: `PTEN`, `MUC1`, `ESR1`, `XBP1`, `GATA3`. Good luck! 
-
+Be sure to run `head(expr)` or `colnames(expr)` to check the names of the 5 genes.
 
 <codeblock id="3333">
 </codeblock>
