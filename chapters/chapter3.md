@@ -405,7 +405,7 @@ I will show you how to make a comparison between groups (Normal vs. Tumor) using
 
 2. Are the results statistically significant?
 
-3. If you have time, google the up-regulated genes and note which cancers it might be. 
+3. If you have time, google the up-regulated genes (try genecards) to read about what role they play in the cell.
 
 
 <codeblock id="333">
