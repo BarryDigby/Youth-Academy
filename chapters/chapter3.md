@@ -226,17 +226,21 @@ Now that we have all of our RNA seq reads in a FASTQ file, we need to map them b
  In the video below, we will take a look at aligned RNA-Seq reads in a BAM file, and view them using IGV. This should help you visualise the concept of genome alignment. 
 
 
-To participate in this video, you will need to download two files:
+To participate in this video, you will need to download for files:
 
 - <span style="color:red">RAP1\_UNINDUCED\_REP1.markdup.sorted.bam</span>
 
 - <span style="color:red">RAP1\_UNINDUCED\_REP1.markdup.sorted.bam.bai</span>
 
+- <span style="color:red">WT\_REP1.markdup.sorted.bam</span>
+
+- <span style="color:red">WT\_REP1.markdup.sorted.bam.bai</span>
+
 The files are available at the following URL: [https://github.com/BarryDigby/Youth-Academy/tree/master/data](https://github.com/BarryDigby/Youth-Academy/tree/master/data).
 
 You will also need to open the IGV web browser once again: [https://igv.org/app/](https://igv.org/app/)
 
-`SNC1` locus : `chrI:87,286-87,752`
+`SNC1`, `SSA1`, `EFB1`.
 
 <iframe src="https://www.youtube.com/embed/khwWzz0G_eg" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:425px;width:100%;border:none;overflow:hidden;" allowfullscreen></iframe>
 
