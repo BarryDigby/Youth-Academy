@@ -9,17 +9,30 @@ type: chapter
 
 <exercise id="1" title="Introduction">
 
-For the next two weeks, we will move away from genetics (and biology in general) towards topics that are data science-centric. Please note that when we do apply these methods to biological datasets, they will be gene expression datasets.
+This week we will cover the machine learning task of <span style="color:blue">clustering</span>, which is a form of <span style="color:blue">classification</span>. 
 
-<par>
+Clustering is a form of <span style="color:blue">unsupervised machine learning</span>. This means we are trying to identify patterns in data that place samples/patients into groups according to common features/variables.
 
-I will try to portray the concepts at a conversational level, employing the use of small datasets so we are not overwhelmed by high-dimensional datasets. I will only include mathematical formulae if I am capable of explaining them.. 
+Let's start with a simple example most of you might know - the sorting hat in Harry Potter. The sorting hat is analogous to a clustering algorithm that sees new data (students) and matches them to the correct house based on their personality traits - which are the features/variables the hat uses to measure students suitabiltiy to a house.
 
-<par>
+<figure>
+  <img src="sorting.jpg" width="100%"/>
+  <figcaption><b>Figure 1</b>: 10 points for Griffindor.</figcaption>
+</figure>
 
-We are going to look at another form of exploratory data analysis - <span style="color:blue">unsupervised machine learning</span> which attempts to identify patterns in our datasets and group samples together according to these patterns.
+***
 
-# Distance Metrics
+This week we will be using gene expression datasets to test out a clustering algorithm. In the image below, we can see how the hierarchical clustering algorithm has placed the 4 patients into 2 groups, according to its dendogram tree. 
+
+<figure>
+  <img src="dend.png" width="100%"/>
+  <figcaption><b>Figure 2</b>: Clustering of toy dataset.</figcaption>
+</figure>
+
+***
+
+Before jumping into the actual clustering algorithm, let's first look at the data.
+# Visualising Trends
 
 Consider the plot below:
 
@@ -42,138 +55,33 @@ Consider the plot below:
 
 ***
 
-Let's pretend we can only characterise patients using 3 genes (variables): `IRX4`, `PAX6` and `OCT4`. In the plot, we can see that patient 1 and patient 2 are the most similar. Why? Because they both exhibit low expression for `PAX6` and high expression for `OCT4` and `IRX4`. Conversely, patient 3 and patient 4 show the inverse expression patterns.
+Let's pretend we can only characterise patients using 3 genes (variables): `IRX4`, `PAX6` and `OCT4`. Answer the questions about the trends in the dataset in the zoom poll. 
 
-***
+We will cover using a scatter plot matrix and a parallel coordinates plot to visualise the trends in the toy dataset:
 
-How do we express 'similarity' computationally? By using a distance metric! In R we can use the built in function called `dist()`:
-
-```console
-d=dist(df, method="manhattan")
-print(d)
-         patient1 patient2 patient3
-patient2        7                  
-patient3       24       27         
-patient4       25       28        3
-```
-
-<details>
-<summary><b>&raquo; The Manhattan distance</b></summary>
-
-<figure>
-  <img src="manhattan.png" width="100%"/>
-  <figcaption><b>Figure 2</b>: Manhattan distance formula</figcaption>
-</figure>
-
-***
-
-The equation reads: The Manhattan distance `d(x,y)` is equal to the sum of the absolute value of x<sub>i</sub> - y<sub>i</sub>.
-
-Let's do this by hand in R:
-
-
-```R
-df # inspect the dataframe
-         IRX4 OCT4 PAX6
-patient1   11   10    1
-patient2   13   13    3
-patient3    2    4   10
-patient4    1    3    9
-
-> abs(df[1,]) # row 1 is patient 1. This will be x
-         IRX4 OCT4 PAX6
-patient1   11   10    1
-
-> abs(df[2,]) # row 2 is patient 2. This will be y
-         IRX4 OCT4 PAX6
-patient2   13   13    3
-
-> abs(df[1,] - df[2,]) # substract the two vectors and take absolute (abs) value
-         IRX4 OCT4 PAX6
-patient1    2    3    2
-
-> sum(abs(df[1,] - df[2,])) # sum the product from previous step
-[1] 7
-```
-
-7 is indeed the value for the distance between patient 1 and 2 in our distance matrix computed above.
-</details>
-
-***
-
-If we want to use a different distance metric, we pass it to the `method` flag. A commonly used distance metric is `euclidean distance`:
-
-```R
-d=dist(df, method="euclidean")
-print(d)
-          patient1  patient2  patient3
-patient2  4.123106                    
-patient3 14.071247 15.842980          
-patient4 14.594520 16.733201  1.732051
-```
-
-<details>
-<summary><b>&raquo; Euclidean distance</b></summary>
-
-<figure>
-  <img src="euclidean.png" width="80%"/>
-  <figcaption><b>Figure 3</b>: Euclidean distance formula</figcaption>
-</figure>
-
-***
-
-The equation reads: The euclidean distance between x and y `d(x,y)` is equal to the square root of the sum of x<sub>i</sub> - y<sub>i</sub> to the power of 2. 
-
-Let's do this by hand in R:
-
-```R
-df # inspect the dataframe
-         IRX4 OCT4 PAX6
-patient1   11   10    1
-patient2   13   13    3
-patient3    2    4   10
-patient4    1    3    9
-
-> abs(df[1,]) # row 1 is patient 1. This will be x
-         IRX4 OCT4 PAX6
-patient1   11   10    1
-
-> abs(df[2,]) # row 2 is patient 2. This will be y
-         IRX4 OCT4 PAX6
-patient2   13   13    3
-
-> (df[1,] - df[2,])^2 # Substract x & y and square result
-         IRX4 OCT4 PAX6
-patient1    4    9    4
-
-> sum((df[1,] - df[2,])^2) # Sum the previous result
-[1] 17
-
-> sqrt(17) # Now get the square root
-[1] 4.123106
-
-> sqrt(sum((df[1,] - df[2,])^2)) # As one liner...
-[1] 4.123106
-```
-</details>
-
-***
-
-The smaller the distance metric, the **closer/more similar** the two samples are.
-
-***
 # Scatter Plot Matrix 
 
-Scatter plot matrices (SPLOM) are useful for visualising correlation in small datasets. In general, visualisations are preferred to distance metrics calculated in the previous section, as our eyes are very good at quickly recognising patterns in data. 
+Scatter plot matrices (SPLOM) are useful for visualising two variables side-by-side. In our toy dataset, we can see that patient 1 and 2 (black and red dots) are close together in 2-D space. The same is true for patients 3 & 4 (green and blue dots) in 2-D space. 
+
+What do I mean by 2-D space? We are plotting two variables side-by-side - meaning the number of dimensions used is only 2.
 
 ***
 
-The code below was taken from the following website, feel free to customise things if you wish: [http://www.sthda.com/english/wiki/scatter-plot-matrices-r-base-graphs](http://www.sthda.com/english/wiki/scatter-plot-matrices-r-base-graphs).
+Do not worry about the code, I will never ask you to make the code yourself. Focus on the plots that are generated.
 
 <codeblock id="04_02">
 </codeblock>
 
-Let's bring back the first barplot I showed you to explain the plot generated by the code above: 
+See the image below on how to interpret the plot: 
+
+<figure>
+  <img src="splom_read.png" width="100%"/>
+  <figcaption><b>Figure 2</b>: Reading a SPLOM.</figcaption>
+</figure>
+
+***
+
+Try to read the scatter plot yourself, and if in doubt, consult the original barplot of the dataset below. 
 
 <figure>
   <img src="clust_patients.png" width="100%"/>
@@ -182,52 +90,94 @@ Let's bring back the first barplot I showed you to explain the plot generated by
 
 ***
 
-Scatter plot matrices produce a <span style="color:blue">pairs plot</span> for each variable in the dataset. Recall that patient 3 and patient 4 are characterised as having high `PAX6` expression levels, and low `IRX4` and `OCT4` expression levels. Focus on the panels on the right hand side of the scatter plot matrix - we can see that `PAX6` is on the x-axis and the green and blue dots (patient 3 and 4 respectively) exhibit high `PAX6` expression (they are to the right of the plot). Conversely, we can see that the black and red (patient 1 and 2) exhibit low `PAX6` expression. 
+Answer the zoom poll questions about patients gene expression to double check your understanding of the plot.
 
 ***
 
-Once again we can visually see how the patients are 'similar' in terms of gene expression values, and lie close together in 2D space. 
-
 # Parallel Coordinate Plots
 
-Another string to your bow... parallel coordinate plots have the same function as SPLOMs using a different visualisation style. 
+Parallel coordinate plots have the same function as SPLOMs using a different visualisation style. 
 
 <codeblock id="04_03">
 </codeblock>
 
 
-The plot offers no new information, just a new perspective. 
+The plot offers no new information, it is just a different way of visualising the variables in the data. Each line represents a patient - and where the expression value of a gene falls within the range of the dataset.
 
-# Hierarchical Clustering
+# Distance Metrics
 
-Lets take a look at Hierarchical clustering, one of the most ubiquitous clustering algorithms. Using this algorithm you can see the relationship of individual data points and relationships of clusters. This is achieved by successively joining small clusters to each other based on the <span style="color:blue">inter-cluster</span> distance. Eventually, you get a tree structure or a <span style="color:blue">dendrogram</span> that shows the relationship between the individual data points and clusters. The height of the dendrogram is the distance between clusters.
+By making plots, we were able to visually assess how similar or dissimilar patients are.
+
+How do we express 'similarity' computationally (how does a computer tell? it does not have eyes!) By using a distance metric.
+
+Let's use the manhattan distance metric to compute similarity. We can do this by hand first as a proof of concept:
+
 <figure>
-  <img src="hierarchical.gif" width="100%"/>
-  <figcaption><b>Figure 2</b>: Schematic of hierarchical clustering stpes.</figcaption>
+  <img src="manhattan.png" width="100%"/>
+  <figcaption><b>Figure 2</b>: Manhattan distance formula</figcaption>
 </figure>
 
 ***
 
-In our toy dataset it looks like this:
+The equation reads: The Manhattan distance `d(x,y)` (distance between patient x and patient y) is equal to the sum of the absolute value of x<sub>i</sub> - y<sub>i</sub>.
 
-<figure>
-  <img src="pca_hclust.png" width="100%"/>
-  <figcaption><b>Figure 3</b>: Recapitulating the above GIF to our toy dataset (open image in new tab for high resolution). Patient 3 and 4 are the most similar, and therefore lie close together in 2D space, meaning that they combine to form a single cluster in the dendogram. There are two "arms" in the dendogram, telling us the dataset forms 2 clusters</figcaption>
-</figure>
+The absolute value means we do not pay attention to the sign, i.e every value is treated as a positive value.
+
+Let's work through an example comparing patient 1 and patient 2: 
+
+```console 
+
+patient 1 = 11, 10, 1
+
+patient 2 = 13, 13, 3
+
+# vector subtraction
+subtract patient 1 - patient 2 = -2, -3, -2
+
+absolute sum value= 2 + 3 + 2 = 7
+```
+
+Try it yourself for patient 1 and patient 3:
+
+```console
+
+patient 1 = 11, 10, 1
+
+patient 3 = 2, 4, 10
+
+subtract patient 1 - patient 3 = 
+
+use absolute sum value = 
+```
+
+And again for patient 1 and patient 4:
+
+```console
+
+patient 1 = 11, 10, 1
+
+patient 4 = 1, 3, 9
+
+subtract patient 1 - patient 4 = 
+
+use absolute sum value = 
+```
+
+Which comparison produced a larger number for the manhattan distance? 
+
+The larger the number, the further apart the samples are from each other. The smaller the number, the closer they are. 
+
+By 'close' I mean close in terms of manhattan distance - which is how a computer can tell if two samples are close or not.
 
 ***
 
-<details>
-<summary><b>&raquo; Code to produce plot</b></summary>
+Luckily, in R we can use the built in function called `dist()`:
 
-(Hit reset if empty)
-
-<codeblock id="04_04">
+<codeblock id="04_0222">
 </codeblock>
 
-</details>
-
 ***
+
 # Heatmaps
 
 Heatmaps are a very, very common visualisation in genomics. There are two types that you will usually come across:
@@ -241,29 +191,50 @@ Heatmaps are a very, very common visualisation in genomics. There are two types 
 
 Let's jump straight into our toy dataset. We are going to reuse code from the 'distance metric' section and plot the result in a heatmap! 
 
-**Note**: We must place the result of the `dist()` function in a matrix
-
 <codeblock id="04_05">
 </codeblock>
 
+## Hierarchical Clustering
+
+Consider the image below:
+
+<figure>
+  <img src="hier.gif" width="75%"/>
+  <figcaption><b>Figure 4</b>: schematic of clustering</figcaption>
+</figure>
+
 ***
 
-Can you see how the heatmap shows that patient 1 and 2 are similar? These two patients have 2 genes that are highly expressed and as such each patient is colored as red (red represents 'hot'/'high' and blue represents 'cold'/'low') **when compared to patient 3 &4**.
+The algorithm works by:
+
+- Computing the distance between each sample
+
+- Form the first cluster by joining the 2 samples that are closest together.
+
+- Re-compute the distances, and repeat until all samples have been added to a cluster.
 
 ***
 
-By setting the `cluster_rows` and `cluster_cols` flags to `TRUE` we can perform clustering on the rows/columns and produce a dendogram on the heatmap. See the code below (we only make a minor change to the previous code block)
+We are not interested in the final 'blob' cluster that contains all samples - we are actually more interested in the intermediate clusters formed by the algorithm. But how can we visualise this? By using a <span style="color:blue">dendogram</span> - a tree-like structure that shows the relationships between the clusters.
+
+<figure>
+  <img src="hierarchical.gif" width="100%"/>
+  <figcaption><b>Figure 4</b>: schematic of clustering with accompanying dendogram</figcaption>
+</figure>
+
+***
+
+Let's add the dendogram to our previous heatmap of our toy dataset:
 
 <codeblock id="04_06">
 </codeblock>
 
-***
+## Feature Heatmaps
 
-Can you recognise the dendogram? It is the same one we produced manually in the 'hierarchical clustering' section :) 
+We can also make a heatmap of the features/variables that make up each sample. This is analogous to the previous barplot, SPLOM and parallel coordinates plot we made earlier - it conveys the same information with the added cluster labels. 
 
-
-**Note** Our toy dataset is a little trivial in that it was organised into correct clusters already. Usually when we have hundreds, thousands of samples, they do not come pre-arranged in the dataframe. This will be evident in the case study.
-
+<codeblock id="04_123">
+</codeblock>
 
 </exercise>
 
@@ -280,34 +251,6 @@ Please take a moment to familiarise yourself with the dataset in the code block 
 
 <codeblock id="04_07">
 </codeblock>
-
-***
-
-1. How many flower species are in the dataset?
-
-    <choice id="1">
-    <opt text="2">
-    Not quite</opt>
-    <opt text="3" correct=true>
-    Yes - setosa, versicolor and virginica </opt>
-    <opt text="4">
-    Not quite</opt>
-    </choice>
-
-2. Columns 1-4 can be described as _______ variables, and the 5th column is a ______ variable: 
-
-    <choice id="2">
-    <opt text="Continuous, Categorical" correct=true>
-    Yes, width and legth are continuous, whilst the 5th column describes the secies.</opt>
-    <opt text="Continuous, Discrete">
-    Not quite </opt>
-    <opt text="Discrete, Categorical">
-    Not quite</opt>
-    </choice>
-
-***
-
-**Note:** When computing distance metrics, plotting heatmaps and performing clustering, **R only accepts numerical dataframes**. You must subset the iris dataset when providing it to functions that calculate these metrics i.e `iris[,1:4]`
 
 ***
 
@@ -382,73 +325,65 @@ Take a moment to try and interpret the heatmap yourself. I can offer my own thou
 
 ## Description
 
-We will use the gene expression dataset from the previous week - recall there are 1305 observations (patients) of 5 genes (features). Each patient belongs to one of `Breast Cancer`, `Lung Cancer` or `Ovarian Cancer`. Like the IRIS dataset, we already know which cancer type each patient belongs to as there is a categorical column with this information. The task here is to identify which genes separate the cancer types the best, similarly to how we identified the features (Sepal/Petal) in the IRIS dataset that separated each flower species (in practice, we would choose these genes to build a machine learning model that can be used to classify new patients of unknown cancer type).
+We will use the gene expression dataset from the previous week - recall there are 1305 observations (patients) of 5 genes (features). Each patient belongs to one of `Breast Cancer`, `Lung Cancer` or `Ovarian Cancer`. We already know which cancer type each patient belongs to as there is a categorical column with this information. The task here is to identify which genes separate the cancer types the best.
 
 ***
 
-**Note**: There will be no MCQ style questions this week, instead we will discuss what we see in the tutorial on Saturday.
+Split into your breakout room and work together to answer the questions about the plots in the sections below. We will go over your answers before the end of the class. 
 
-* You will have to open the plots in a new tab to view them at full resolution
+* You might have to open the plots in a new tab to view them at full resolution
+
+
+***
 
 ## Sample Heatmap
 
-We should first make a sample heatmap to see how well samples cluster together in euclidean space. Refer to the introduction and case study for guidance if you are struggling to complete the code block: 
+We will start with a sample heatmap by computing the distance for each of the 1305 samples, and plotting the result. You should be able to identify which cancer types are the most similar based on the colors of the plot (green - similar, red - different). 
 
-- When computing the distance using `dist()`, use "euclidean" as the distance metric. 
+Remember, we are not looking at the genes here, but tyring to get a sense of how 'close' the samples are in manhattan distance.
 
-- The first argument of `pheatmap()` expects `dmat` as a matrix. 
+- Which cancer types are the most similar?
 
-- Scale the heatmap by `row`. 
+- Which cancer type is the least similar (to the other 2)? 
 
-- Add `annotdf` and `ann_col` to the final three arguments of `pheatmap` in the correct order.
 
 <codeblock id="04_13">
 </codeblock>
 
+
 ## Pairs plot 
 
-Complete the code block below and inspect the pairs plot: 
+Let's view a pairs plot of the dataset. We have 1305 samples in this dataset, so the plot will have lots of data points! 
 
-- remember to subset the dataframe `expr` properly so the numeric columns are the first argument passed to `pairs(___)`
+This time we are looking at the 5 genes that make up the dataset, colored according to which cancer type they belong to. 
 
-- `col=_____` will expect the categorical column of the `expr` dataframe
+Questions: 
+
+- For the breast cancer patients (black dots), which gene do you think shows the most difference between the three cancer types? (Are the cloud of black dots further away from the red and green dots in any gene?). Pay close attention to the x and y axis. 
+
+- Lung cancer patients and ovarian cancer patients (red and green dots) look like they overlap a lot for most genes, but they do seperate in one gene. Can you identify which gene this is? 
 
 <codeblock id="04_12">
 </codeblock>
 
-
+***
 ## Parallel Plot
 
-Complete the code block below to produce a parallel plot and take note of any features that separate the cancer types. 
+It is easier to see the gene expression patterns using a parallel plot. Answer the following questions: 
 
-- Recall the first argument passed to `parcoord()` are the numerical features in `expr`. Subset the dataframe accordingly. 
+- In which gene are each cancer type relatively similar? i.e they overlap a lot? 
 
-- `col = ` expects the categorical column, subset accordingly. 
-
-- Use the value 0.5 for the argument `lwd` - we want to make the lines thin.                                                                                                                                                     
+- In which gene do each cancer type show high - medium - low expression? i.e each cancer type does not overlap much in this gene.
 
 <codeblock id="04_14">
 </codeblock>
 
-
-## Feature Heatmap
-
-Finally, let's make a feature heatmap to get a global snapshot of gene expression in each cancer patient:
-
-- Subset the categorical features and save as `cancer`
-
-- Isolate the rownames and save as `id`
-
-- When computing the distance provide the `expr` dataframe (which has already been subset) and use "euclidean" or "manhattan" (try both to see what happens!)
-
-- When calling the heatmap try different colors such as: `redgreen()`, `bluered()`, `greenred()` , `redblue()`
-
-
-<codeblock id="04_15">
-</codeblock>
-
 ***
 
-Congratulations on making it this far, these materials are a small sample of topics covered in the MSc in genomic data science at NUIG!
+You can only afford to sequence 3 of the 5 genes. Which genes are you keeping that can be used to distinguish the cancer types? 
+
+- Why have you chosen these 3 genes? 
+
+- Why have you decided to omit the 2 genes? 
 
 </exercise>

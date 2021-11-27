@@ -4,10 +4,10 @@ library(gplots)
 expr <- read.delim("https://raw.githubusercontent.com/BarryDigby/Youth-Academy/master/data/expr.txt", stringsAsFactors = TRUE, row.names = "bcr_patient_barcode")
 
 # Isolate the categorical variable 
-cancer <- _______
+cancer <- expr[,1]
 
 # isolate the rownames 
-id <- _________
+id <- rownames(expr)
 
 # transpose the dataframe 
 expr <- as.data.frame(t(expr[,2:6]))
@@ -25,11 +25,11 @@ ann_col <- list(Cancer = c(BRCA = "darkorange2",
                            OV = "black"))
 
 # Calculate distance metrics. 
-dmat <- dist(as.matrix(t(____)), method = "________")
+dmat <- dist(as.matrix(t(expr)), method = "euclidean")
 
 # make heatmap
 pheatmap(expr,
          clustering_distance_cols = dmat, cluster_rows = FALSE,
          annotation_col = annotdf, annotation_colors = ann_col, 
-         scale = "row", color = _______(200),
+         scale = "row", color = greenred(200),
          show_colnames = FALSE)

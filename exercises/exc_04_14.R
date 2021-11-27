@@ -2,7 +2,7 @@
 expr <- read.delim("https://raw.githubusercontent.com/BarryDigby/Youth-Academy/master/data/expr.txt", stringsAsFactors = TRUE, row.names = "bcr_patient_barcode")
 
 # Use parcoord() in the MASS package
-MASS::parcoord(_______, col = _______, var.label = TRUE, lwd = ____)
+MASS::parcoord(expr[,2:6], col = expr[,1], var.label = TRUE, lwd = 0.5)
 
 # Add a legend
 par(xpd = TRUE)
