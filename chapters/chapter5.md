@@ -258,11 +258,30 @@ The first task is to split the dataset into a training and test set:
 
 1. Is the training dataset balanced? (equal number of groups?) Hint: use `table(train$group)`.
 
-***
+## Create model using training data
 
 Now fill out the code block to create our model based on the training data:
 
 <codeblock id="05_08">
+</codeblock>
+
+***
+
+Please ask for help if you are struggling to fill the code block above.
+
+***
+
+
+1. Try different values for `K`. What do you observe?
+
+2. What value of `K` gives the best accuracy?
+
+
+## Test model using test data
+
+Great! Now we have a model that can classify our test data. Let's test it on the test data:
+
+<codeblock id="05_09">
 </codeblock>
 
 

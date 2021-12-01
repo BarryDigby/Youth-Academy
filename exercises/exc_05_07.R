@@ -10,4 +10,7 @@ set.seed(2112)
 train_size <- floor(0.70 * nrow(mat))
 train_idx <- sample(seq_len(nrow(mat)), size = train_size)
 
+# store test data for later
+test  <- mat[-train_idx,]
+
 train <- mat[train_idx,]
