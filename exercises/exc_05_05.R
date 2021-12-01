@@ -2,7 +2,7 @@ library(pheatmap)
 library(gplots)
 
 # load dataset
-load("data/lncap.RData")
+load("data/LNCaP.RData")
 
 # Calculate distance metrics. 
 dmat <- dist(mat[,1:20], method = "manhattan", diag = T)
