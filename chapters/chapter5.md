@@ -307,5 +307,4 @@ Once this is done, we can use predict to create a confusionMatrix to see which g
 
 2. Which patient is the best candidate for enzalutamide treatment?
 
-
 </exercise>
