@@ -196,3 +196,18 @@ The new data sample we collected is the last row of our test dataset (we manuall
 Please add the line of code: `print(test_predictions[length(test_predictions)])` to the code block above to reveal which species our algorithm classified the new data sample as. 
 
 </exercise>
+
+<exercise id="3" title="Worksheet">
+
+This week we will use a real dataset to train a KNN model. The dataset description is given below: 
+
+> The dataset consists of 18 samples: 6 Clone1 samples, 6 Clone9 samples, and 6 Control samples that were derived using prostate cancer cell lines. Clone1 cells are prostate cancer cells that are highly resistant to enzalutamide treatment, Clone9 cells are moderately resistant to enzalutamide and finally, Control cells are 'regular' prostate cancer cells. The goal of the dataset is to classify new prostate cancer patients into one of the 3 groups based on their gene expression profile, which helps to identify if they are a good fit for enzalutamide treatment.
+
+## Sample Heatmap 
+
+Let's begin by inspecting the sample heatmap. We expect `Clone1`, `Clone9` and `Control` samples to cluster together when hierarchical clustering is performed. 
+
+<codeblock id="05_05">
+</codeblock>
+
+</exercise>
