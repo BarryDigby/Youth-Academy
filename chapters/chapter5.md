@@ -305,5 +305,7 @@ Once this is done, we can use predict to create a confusionMatrix to see which g
 
 1. What is the predicted group for the 3 new patients?
 
+2. Which patient is the best candidate for enzalutamide treatment?
+
 
 </exercise>
