@@ -284,5 +284,26 @@ Great! Now we have a model that can classify our test data. Let's test it on the
 <codeblock id="05_09">
 </codeblock>
 
+***
+
+1. How accurate is the model in predicting the test datset?
+
+## New Data 
+
+Let's deploy our model on a real world example. 3 new patients have come to the clinic presenting with prostate cancer. We will use the gene expression profile of these patients to predict their group - if a patient is classified as `Clone1` then it is a bad idea to try enzalutamide treatment. However, if the patient is classified as `Control`, then they are an excellent candidate for treatment.
+
+***
+
+To do this, we will recreate our model and add the 3 new patients to the test dataset.
+
+Once this is done, we can use predict to create a confusionMatrix to see which group the patients are classified as:
+
+<codeblock id="05_10">
+</codeblock>
+
+***
+
+1. What is the predicted group for the 3 new patients?
+
 
 </exercise>
