@@ -2,7 +2,7 @@ library(pheatmap)
 library(gplots)
 
 # load dataset
-mat <- read.table("/data/mat.txt", row.names="samples", header=T, sep=",", stringsAsFactors = TRUE)
+mat <- read.delim("https://raw.githubusercontent.com/BarryDigby/Youth-Academy/master/data/mat.txt", row.names="samples", header=T, sep=",", stringsAsFactors = TRUE)
 
 # Calculate distance metrics. 
 dmat <- dist(mat[,1:20], method = "manhattan", diag = T)

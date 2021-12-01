@@ -218,4 +218,52 @@ Let's begin by inspecting the sample heatmap. We expect `Clone1`, `Clone9` and `
 <codeblock id="05_05">
 </codeblock>
 
+***
+
+Take moment to inspect the heatmap.
+
+1. Do you think the clustering worked?
+
+2. One group of samples is very different to the others. Which group is it?
+
+3. Which groups might be difficult to distinguish?
+
+
+## Feature Heatmap 
+
+In the sample heatmap we could see that one group is very different to the others. Classifying patients into this group should be easy. 
+
+Let's make a feature heatmap to inspect the variables in the dataset.
+
+<codeblock id="05_06">
+</codeblock>
+
+***
+
+You should be able to see 3 clear red blocks where gene expression is high in a certain group but low in the others. However, there are 5 genes in the dataset that show variable expression across the three groups (e.g for the gene, there are red cells across all 3 groups - the genes expression is not unique to one group).
+
+1. Which 5 genes are variable across the three groups?
+
+
+## Split Dataset for Model 
+
+We will keep all genes in the dataset for now to see if the model can overcome the variable genes.
+
+The first task is to split the dataset into a training and test set:
+
+<codeblock id="05_07">
+</codeblock>
+
+***
+
+1. Is the training dataset balanced? (equal number of groups?) Hint: use `table(train$group)`.
+
+***
+
+Now fill out the code block to create our model based on the training data:
+
+<codeblock id="05_08">
+</codeblock>
+
+
 </exercise>
